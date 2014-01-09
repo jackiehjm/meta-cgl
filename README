@@ -40,8 +40,6 @@ Table of Contents
 I. Adding the cgl layer to your build
 =================================================
 
---- replace with specific instructions for the cgl layer ---
-
 In order to use this layer, you need to make the build system aware of
 it.
 
@@ -61,4 +59,18 @@ other layers needed. e.g.:
 II. Misc
 ========
 
---- replace with specific information about the cgl layer ---
+The meta-cgl layer tries to offer CGL compliant packages to be used for 
+a Linux distribution.
+
+II. Layer specific information
+==============================
+
+The layer contains a core package group (packagegroup-core-cgl.bb) that
+should aggregate all the other available package groups. The 
+recommandation is to group all CGL compliant features into specific 
+package groups.
+
+An CGL compliant Linux image is also available into the layer. Its use 
+is to facilitate the development of a CGL compliant OS.
+The core image name is: cgl-core-image.bb
+ 
