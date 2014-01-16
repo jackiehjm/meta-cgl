@@ -9,6 +9,8 @@ inherit packagegroup
 
 PACKAGES = "packagegroup-cgl-middleware"
 
-RDEPENDS_packagegroup-cgl-middleware = ""
+RDEPENDS_packagegroup-cgl-middleware = "\
+   ipsec-tools \
+"
 
 RRECOMMENDS_packagegroup-cgl-middleware = ""
