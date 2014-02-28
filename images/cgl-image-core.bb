@@ -7,6 +7,7 @@ IMAGE_INSTALL += "\
     ${CORE_IMAGE_BASE_INSTALL} \
     packagegroup-core-basic \
     packagegroup-core-lsb \
+    packagegroup-core-buildessential \
     packagegroup-cgl \
 	"
 IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
