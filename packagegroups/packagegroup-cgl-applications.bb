@@ -8,6 +8,8 @@ inherit packagegroup
 
 PACKAGES = "packagegroup-cgl-applications"
 
-RDEPENDS_packagegroup-cgl-applications = ""
+RDEPENDS_packagegroup-cgl-applications = " \
+    lvm2 \
+    "
 
 RRECOMMENDS_packagegroup-cgl-applications = ""
