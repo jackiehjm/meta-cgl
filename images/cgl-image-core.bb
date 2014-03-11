@@ -5,7 +5,7 @@ include images/enea-image-minimal.bb
 # Include modules in rootfs
 IMAGE_INSTALL += "\
     ${CORE_IMAGE_BASE_INSTALL} \
-    packagegroup-core-basic \
+    packagegroup-core-full-cmdline \
     packagegroup-core-lsb \
     packagegroup-core-buildessential \
     packagegroup-cgl \
