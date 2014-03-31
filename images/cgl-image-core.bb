@@ -93,6 +93,7 @@ IMAGE_INSTALL += "\
     ${DHCP} \
     ${MULTIPATH_TOOLS} \
     ${LM_SENSORS} \
+    monit \
     "
 
 
