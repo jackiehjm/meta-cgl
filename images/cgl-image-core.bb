@@ -10,6 +10,43 @@ VALGRIND_x86 ?= "valgrind"
 VALGRIND_x86_64 ?= "valgrind"
 VALGRIND_armv7a ?= "valgrind"
 
+ENEA_GPL = " \
+    linx \
+    linx-mod \
+           "
+DHCP = " \
+    dhcp-server \
+    dhcp-server-config \
+    dhcp-client \
+    dhcp-relay \
+    dhcp-omshell \
+       "
+
+MULTIPATH_TOOLS = " \
+    libmpathpersist \
+    mpathpersist \
+    kpartx \
+    libmultipath \
+    multipath \
+    multipathd \
+    libmultipath-dev \
+    libmpathpersist-dev \
+                  "
+LM_SENSORS = " \
+    lmsensors-libsensors \
+    lmsensors-sensors \
+    lmsensors-sensord \
+    lmsensors-fancontrol \
+    lmsensors-sensorsdetect \
+    lmsensors-sensorsconfconvert \
+    lmsensors-pwmconfig \
+    lmsensors-isatools \
+    lmsensors-config-libsensors \
+    lmsensors-config-sensord \
+    lmsensors-config-fancontrol \
+    lmsensors-config-cgi \
+             "
+
 # Include modules in rootfs
 IMAGE_INSTALL += "\
     ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
@@ -38,8 +75,7 @@ IMAGE_INSTALL += "\
     babeltrace \
     netbase \
     sudo \
-    linx \
-    linx-mod \
+    ${ENEA_GPL} \
     ${VALGRIND} \
     kernel-modules \
     fuse \
@@ -47,7 +83,18 @@ IMAGE_INSTALL += "\
     gdbserver \
     rsync \
     strace \
+    libevent \
+    mdadm \
+    ntp \
+    quota \
+    smartmontools \
+    strongswan \
+    vlan \
+    ${DHCP} \
+    ${MULTIPATH_TOOLS} \
+    ${LM_SENSORS} \
     "
+
 
 # kexec-tools doesn't work on Mips
 KEXECTOOLS_mips ?= ""
