@@ -54,6 +54,7 @@ IMAGE_INSTALL += "\
     packagegroup-core-full-cmdline \
     packagegroup-core-lsb \
     packagegroup-core-buildessential \
+    packagegroup-core-selinux \
     packagegroup-cgl \
     kexec-tools \
     openssl \
@@ -93,6 +94,9 @@ IMAGE_INSTALL += "\
     ${DHCP} \
     ${MULTIPATH_TOOLS} \
     ${LM_SENSORS} \
+    \
+    corosync \
+    openipmi \
     monit \
     "
 
