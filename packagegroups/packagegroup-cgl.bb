@@ -10,7 +10,7 @@ PACKAGES = "packagegroup-cgl"
 
 RDEPENDS_${PN} = "\
     packagegroup-cgl-kernel \
-    packagegroup-cgl-sdtools \
+    packagegroup-cgl-swdevtools \
     packagegroup-cgl-middleware \
     packagegroup-cgl-applications \
     "

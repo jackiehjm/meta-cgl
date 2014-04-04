@@ -6,8 +6,8 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a
 inherit packagegroup
 
 
-PACKAGES = "packagegroup-cgl-sdtools"
+PACKAGES = "packagegroup-cgl-swdevtools"
 
-RDEPENDS_packagegroup-cgl-sdtools = ""
+RDEPENDS_packagegroup-cgl-swdevtools = ""
 
-RRECOMMENDS_packagegroup-cgl-sdtools = ""
+RRECOMMENDS_packagegroup-cgl-swdevtools = ""
