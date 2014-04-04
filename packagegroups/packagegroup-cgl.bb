@@ -1,5 +1,6 @@
-SUMMARY = "Carrier Grade Linux (CGL)"
-DESCRIPTION = "Packages required to satisfy the Carrier Grade Linux (CGL) specification"
+SUMMARY = "Packages required to satisfy the Carrier Grade Linux (CGL) specification"
+DESCRIPTION = "This package group is the one that gathers all the available \
+               package groups."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 

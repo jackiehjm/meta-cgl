@@ -1,10 +1,12 @@
-SUMMARY = "Carrier Grade Linux (CGL)"
-DESCRIPTION = "Application packages required to satisfy the Carrier Grade Linux (CGL) specification"
+SUMMARY = "Application packages required to satisfy the Carrier Grade Linux (CGL) specification"
+DESCRIPTION = "This package group includes the application with which the user interacts \
+               when using a Linux operation system."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 inherit packagegroup
 inherit pkgconfig
+
 
 PACKAGES = "packagegroup-cgl-applications"
 

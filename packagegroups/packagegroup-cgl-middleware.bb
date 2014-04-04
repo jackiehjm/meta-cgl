@@ -1,5 +1,6 @@
-SUMMARY = "Carrier Grade Linux (CGL)"
-DESCRIPTION = "Middleware packages required to satisfy the Carrier Grade Linux (CGL) specification"
+SUMMARY = "Middleware packages required to satisfy the Carrier Grade Linux (CGL) specification"
+DESCRIPTION = "This package group contains high availability application and platform \
+               interfaces, databases, application servers, communication protocols etc."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
