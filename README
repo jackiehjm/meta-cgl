@@ -46,14 +46,25 @@ it.
 Assuming the cgl layer exists at the top-level of your
 yocto build tree, you can add it to the build system by adding the
 location of the cgl layer to bblayers.conf, along with any
-other layers needed. e.g.:
+other layers needed. Adapt the below list to proper format.
 
-  BBLAYERS ?= " \
-    /path/to/yocto/meta \
-    /path/to/yocto/meta-yocto \
-    /path/to/yocto/meta-yocto-bsp \
-    /path/to/yocto/meta-cgl \
-    "
+  BBLAYERS:
+
+    meta
+    meta-enea
+    meta-cgl
+    meta-qt3
+    meta-openembedded/meta-networking
+    meta-openembedded/meta-filesystems
+    meta-openembedded/meta-oe
+    meta-openembedded/meta-perl
+    meta-yocto
+    meta-yocto-bsp
+    meta-virtualization
+    meta-openclovis
+    meta-selinux
+    meta-security
+    meta-cloud-services/meta-openstack
 
 
 II. Misc
