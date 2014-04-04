@@ -35,6 +35,8 @@ Table of Contents
 
   I. Adding the cgl layer to your build
  II. Misc
+III. Layer specific information
+ IV. Specific terms and information
 
 
 I. Adding the cgl layer to your build
@@ -73,7 +75,7 @@ II. Misc
 The meta-cgl layer tries to offer CGL compliant packages to be used for 
 a Linux distribution.
 
-II. Layer specific information
+III. Layer specific information
 ==============================
 
 The layer contains a core package group (packagegroup-cgl.bb) that
@@ -84,4 +86,19 @@ package groups.
 An CGL compliant Linux image is also available into the layer. Its use 
 is to facilitate the development of a CGL compliant OS.
 The core image name is: cgl-image-core.bb
- 
+
+IV. Specific terms and information
+==================================
+
+    HA(high availability) technology - refers to a system or component 
+that is continuously operational for a long length of time.
+    Standard interface - represents a joint place of two systems or 
+subsystems that has a previously agreed  upon form so that two systems
+may be readily connected together.
+    Service interface - a programatic interface that tries to achive 
+interoperability. It enables users to describe independently of a platform
+or programming language operations required in the application system at
+a later stage.
+    Interface - shared boundary or connection between two dissimilar 
+objects, devices or systems.
+
