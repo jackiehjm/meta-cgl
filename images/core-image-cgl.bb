@@ -1,4 +1,4 @@
-require core-image-lsb.bb
+require recipes-extended/images/core-image-lsb.bb
 
 
 VALGRIND ?= ""

@@ -1,4 +1,4 @@
-require core-image-lsb-qt3.bb
+require recipes-qt3/images/core-image-lsb-qt3.bb
 
 
 VALGRIND ?= ""
