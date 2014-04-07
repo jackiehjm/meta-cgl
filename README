@@ -68,6 +68,8 @@ other layers needed. Adapt the below list to proper format.
     meta-security
     meta-cloud-services/meta-openstack
 
+A BBMASK definition is required because of some recipes duplicate existance:
+    BBMASK = "meta-cloud-services/meta-openstack/recipes-support/lvm2|meta-security/recipes-security/libcap-ng"
 
 II. Misc
 ========

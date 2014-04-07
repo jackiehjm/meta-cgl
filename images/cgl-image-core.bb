@@ -10,10 +10,6 @@ VALGRIND_x86 ?= "valgrind"
 VALGRIND_x86_64 ?= "valgrind"
 VALGRIND_armv7a ?= "valgrind"
 
-ENEA_GPL = " \
-    linx \
-    linx-mod \
-           "
 DHCP = " \
     dhcp-server \
     dhcp-server-config \
@@ -60,9 +56,7 @@ IMAGE_INSTALL += "\
     openssl \
     bc \
     dhcp-client \
-    sqlite3 \
     pramfs-init \
-    zip \
     gettext \
     gettext-runtime \
     mtd-utils \
@@ -75,8 +69,6 @@ IMAGE_INSTALL += "\
     lttng-modules \
     babeltrace \
     netbase \
-    sudo \
-    ${ENEA_GPL} \
     ${VALGRIND} \
     kernel-modules \
     fuse \
@@ -94,9 +86,7 @@ IMAGE_INSTALL += "\
     ${DHCP} \
     ${MULTIPATH_TOOLS} \
     ${LM_SENSORS} \
-    \
     corosync \
-    openipmi \
     monit \
     "
 
