@@ -9,6 +9,8 @@ inherit packagegroup
 
 PACKAGES = "packagegroup-cgl-swdevtools"
 
-RDEPENDS_packagegroup-cgl-swdevtools = ""
+RDEPENDS_packagegroup-cgl-swdevtools = " \
+    libuio \
+    "
 
 RRECOMMENDS_packagegroup-cgl-swdevtools = ""

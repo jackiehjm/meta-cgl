@@ -10,11 +10,38 @@ inherit pkgconfig
 
 PACKAGES = "packagegroup-cgl-applications"
 
-RDEPENDS_packagegroup-cgl-applications = " \
-    lvm2 \
+LM_SENSORS = " \
+    lmsensors-libsensors \
+    lmsensors-sensors \
+    lmsensors-sensord \
+    lmsensors-fancontrol \
+    lmsensors-sensorsdetect \
+    lmsensors-sensorsconfconvert \
+    lmsensors-pwmconfig \
+    lmsensors-isatools \
+    lmsensors-config-libsensors \
+    lmsensors-config-sensord \
+    lmsensors-config-fancontrol \
+    lmsensors-config-cgi \
     "
 
-DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
+RDEPENDS_packagegroup-cgl-applications = " \
+    lvm2 \
+    ${LM_SENSORS} \
+    bc \
+    gettext \
+    gettext-runtime \
+    babeltrace \
+    gdb \
+    gdbserver \
+    rsync \
+    strace \
+    libevent \
+    mdadm \
+    quota \
+    smartmontools \
+    monit \
+    "
 
 LTTNG ?= "\
     lttng-tools \

@@ -10,6 +10,9 @@ inherit packagegroup
 
 PACKAGES = "packagegroup-cgl-kernel"
 
-RDEPENDS_packagegroup-cgl-kernel = ""
+RDEPENDS_packagegroup-cgl-kernel = " \
+    ltp \
+    kernel-modules \
+    "
 
 RRECOMMENDS_packagegroup-cgl-kernel = ""

@@ -9,6 +9,25 @@ inherit packagegroup
 
 PACKAGES = "packagegroup-cgl-middleware"
 
+DHCP = " \
+    dhcp-server \
+    dhcp-server-config \
+    dhcp-client \
+    dhcp-relay \
+    dhcp-omshell \
+    "
+
+MULTIPATH_TOOLS = " \
+    libmpathpersist \
+    mpathpersist \
+    kpartx \
+    libmultipath \
+    multipath \
+    multipathd \
+    libmultipath-dev \
+    libmpathpersist-dev \
+    "
+
 RDEPENDS_packagegroup-cgl-middleware = "\
     ipsec-tools \
     net-snmp-server \
@@ -17,6 +36,20 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     net-snmp-mibs \
     net-snmp-server-snmpd \
     net-snmp-server-snmptrapd \
+    ${DHCP} \
+    ${MULTIPATH_TOOLS} \
+    openssl \
+    mtd-utils \
+    net-tools \
+    pciutils \
+    usbutils \
+    netbase \
+    ntp \
+    strongswan \
+    vlan \
+    corosync \
     "
+
+DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
 
 RRECOMMENDS_packagegroup-cgl-middleware = ""
