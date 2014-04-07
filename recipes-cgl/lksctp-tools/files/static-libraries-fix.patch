@@ -1,6 +1,50 @@
+From 93fd7448317419594472045663ff13034c31efa9 Mon Sep 17 00:00:00 2001
+From: Vlad Yasevich <vladislav.yasevich@hp.com>
+Date: Wed, 14 Jan 2009 14:30:20 -0500
+Subject: [PATCH] [lib] Fix building of static libraries
+
+When running "./configure --disable-shared --enable-
+static" the build fails with the following error:
+
+gcc -g -Wall -Wstrict-prototypes -Wimplicit-function-
+declaration -g -O2 -o nagle_snd
+nagle_snd.o ../../src/lib/.libs/libsctp.a ../../src/t
+estlib/.libs/libsctputil.a
+../../src/testlib/.libs/libsctputil.a(sctputil.o): In
+function `test_peer_addr':
+/home/roubert/src/lksctp/lksctp-tools-
+1.0.6/src/testlib/sctputil.c:376: undefined reference
+to `sctp_getpaddrs'
+/home/roubert/src/lksctp/lksctp-tools-
+1.0.6/src/testlib/sctputil.c:382: undefined reference
+to `sctp_freepaddrs'
+/home/roubert/src/lksctp/lksctp-tools-
+1.0.6/src/testlib/sctputil.c:416: undefined reference
+to `sctp_freepaddrs'
+/home/roubert/src/lksctp/lksctp-tools-
+1.0.6/src/testlib/sctputil.c:400: undefined reference
+to `sctp_freepaddrs'
+collect2: ld returned 1 exit status
+make[3]: *** [nagle_snd] Error 1
+
+Changing the order of libsctp.a and libsctputil.a
+fixes this. The attached patch updates
+src/apps/Makefile.am and src/func_tests/Makefile.am
+to do that.
+
+Patch submitted by Fredrik Roubert <roubert@sf.net>.
+
+Signed-off-by: Vlad Yasevich <vladislav.yasevich@hp.com>
+---
+ src/apps/Makefile.am       |    4 ++--
+ src/func_tests/Makefile.am |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/apps/Makefile.am b/src/apps/Makefile.am
+index 515ef96..960cd5e 100644
 --- a/src/apps/Makefile.am
 +++ b/src/apps/Makefile.am
-@@ -8,8 +8,8 @@
+@@ -8,8 +8,8 @@ include $(top_srcdir)/Makefile.dirs
  INCLUDES = -I. -I$(top_srcdir)/src/include -I$(top_srcdir)/src/testlib 
  AM_CFLAGS = -g -Wall -Wstrict-prototypes -Wimplicit-function-declaration
  AM_LDFLAGS = 
@@ -11,9 +55,11 @@
  
  # programs to be installed with the distriubution
  bin_PROGRAMS = sctp_darn sctp_test
+diff --git a/src/func_tests/Makefile.am b/src/func_tests/Makefile.am
+index b985685..44f0e94 100644
 --- a/src/func_tests/Makefile.am
 +++ b/src/func_tests/Makefile.am
-@@ -8,8 +8,8 @@
+@@ -8,8 +8,8 @@ include $(top_srcdir)/Makefile.dirs
  INCLUDES = -I. -I$(top_srcdir)/src/include -I$(top_srcdir)/src/testlib 
  AM_CFLAGS = -g -Wall -Wstrict-prototypes -Wimplicit-function-declaration
  AM_LDFLAGS = -lpthread
@@ -23,3 +69,8 @@
 +   $(top_builddir)/src/lib/libsctp.la
  
  V6FLAGS = -DCONFIG_IPV6=1 -DTEST_V6=1 ${DEFS} ${INCLUDES} ${CFLAGS}
+ 
+-- 
+1.7.1
+
+
