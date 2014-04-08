@@ -1,6 +1,4 @@
-This README file contains information on the contents of the
-cgl layer.
-
+This README file contains information on the contents of the cgl layer.
 Please see the corresponding sections below for details.
 
 
@@ -30,6 +28,7 @@ xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
 Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
 
 
+
 Table of Contents
 =================
 
@@ -53,7 +52,6 @@ other layers needed. Adapt the below list to proper format.
   BBLAYERS:
 
     meta
-    meta-enea
     meta-cgl
     meta-qt3
     meta-openembedded/meta-networking
@@ -71,36 +69,38 @@ other layers needed. Adapt the below list to proper format.
 A BBMASK definition is required because of some recipes duplicate existance:
     BBMASK = "meta-cloud-services/meta-openstack/recipes-support/lvm2|meta-security/recipes-security/libcap-ng"
 
+
 II. Misc
 ========
 
-The meta-cgl layer tries to offer CGL compliant packages to be used for 
+The meta-cgl layer tries to offer CGL compliant packages to be used for
 a Linux distribution.
+
 
 III. Layer specific information
 ==============================
 
 The layer contains a core package group (packagegroup-cgl.bb) that
-should aggregate all the other available package groups. The 
-recommandation is to group all CGL compliant features into specific 
+should aggregate all the other available package groups.
+The recommandation is to group all CGL compliant features into specific
 package groups.
 
-An CGL compliant Linux image is also available into the layer. Its use 
+An CGL compliant Linux image is also available into the layer. Its use
 is to facilitate the development of a CGL compliant OS.
 The core image name is: cgl-image-core.bb
+
 
 IV. Specific terms and information
 ==================================
 
-    HA(high availability) technology - refers to a system or component 
+    HA(high availability) technology - refers to a system or component
 that is continuously operational for a long length of time.
-    Standard interface - represents a joint place of two systems or 
+    Standard interface - represents a joint place of two systems or
 subsystems that has a previously agreed  upon form so that two systems
 may be readily connected together.
-    Service interface - a programatic interface that tries to achive 
+    Service interface - a programatic interface that tries to achive
 interoperability. It enables users to describe independently of a platform
 or programming language operations required in the application system at
 a later stage.
-    Interface - shared boundary or connection between two dissimilar 
+    Interface - shared boundary or connection between two dissimilar
 objects, devices or systems.
-
