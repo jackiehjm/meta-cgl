@@ -7,26 +7,47 @@ Dependencies
 
 This layer depends on:
 
-  URI: git://git.openembedded.org/bitbake
+  URI: git://git.enea.com/linux/poky
   branch: master
 
-  URI: git://git.openembedded.org/openembedded-core
-  layers: meta
+  URI: git://git.enea.com/linux/meta-openembedded
+  layers: meta-oe, meta-perl, meta-networking, meta-filesystems
   branch: master
 
-  URI: git://git.yoctoproject.org/xxxx
-  layers: xxxx
+  URI: git://git.yoctoproject.org/meta-cloud-services
+  layers: meta-openstack
+  branch: master
+
+  URI: git://git.yoctoproject.org/meta-qt3
+  branch: master
+
+  URI: https://github.com/joaohf/meta-openclovis
+  branch: master
+
+  URI: git://git.yoctoproject.org/meta-selinux
+  branch: master
+
+  URI: git://git.yoctoproject.org/meta-security
   branch: master
 
 
-Patches
-=======
+Source code
+===========
 
-Please submit any patches against the cgl layer to the
-xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
+git://git.enea.com/linux/meta-cgl.git
 
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
 
+Maintenance
+===========
+
+Maintainers: Enea Linux Team <linux-maintainers@enea.com>
+
+
+Contributing
+============
+
+Contributions and patches can be sent to the Enea Linux mailing
+list: enealinux@lists.enea.com
 
 
 Table of Contents
