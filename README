@@ -7,10 +7,10 @@ Dependencies
 
 This layer depends on:
 
-  URI: git://git.enea.com/linux/poky
+  URI: git://git.yoctoproject.org/poky
   branch: master
 
-  URI: git://git.enea.com/linux/meta-openembedded
+  URI: git://git.openembedded.org/meta-openembedded
   layers: meta-oe, meta-perl, meta-networking, meta-filesystems
   branch: master
 
@@ -88,7 +88,7 @@ other layers needed. Adapt the below list to proper format.
     meta-cloud-services/meta-openstack
 
 A BBMASK definition is required because of some recipes duplicate existance:
-    BBMASK = "meta-cloud-services/meta-openstack/recipes-support/lvm2|meta-security/recipes-security/libcap-ng"
+    BBMASK = "meta-security/recipes-security/libcap-ng"
 
 
 II. Misc
