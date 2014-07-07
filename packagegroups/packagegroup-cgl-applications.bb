@@ -11,18 +11,8 @@ inherit pkgconfig
 PACKAGES = "packagegroup-cgl-applications"
 
 LM_SENSORS = " \
-    lmsensors-libsensors \
-    lmsensors-sensors \
-    lmsensors-sensord \
-    lmsensors-fancontrol \
-    lmsensors-sensorsdetect \
-    lmsensors-sensorsconfconvert \
-    lmsensors-pwmconfig \
-    lmsensors-isatools \
-    lmsensors-config-libsensors \
-    lmsensors-config-sensord \
-    lmsensors-config-fancontrol \
-    lmsensors-config-cgi \
+    lmsensors \
+    lmsensors-config \
     "
 
 RDEPENDS_packagegroup-cgl-applications = " \
