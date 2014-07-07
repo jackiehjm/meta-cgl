@@ -14,7 +14,7 @@ SRC_URI[sha256sum] = "0c00573ebc0156c534a5952f392c2a7bedde194f8261c0549732205593
 INITSCRIPT_NAME = "monit"
 INITSCRIPT_PARAMS = "defaults 99"
 
-inherit autotools update-rc.d
+inherit autotools-brokensep update-rc.d
 
 EXTRA_OECONF = "\
 	libmonit_cv_setjmp_available=no \
