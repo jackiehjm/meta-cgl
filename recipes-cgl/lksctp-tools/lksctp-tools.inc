@@ -10,7 +10,10 @@ INC_PR = "r1"
 
 BBCLASSEXTEND = "native"
 
-inherit autotools pkgconfig binconfig
+inherit autotools-brokensep pkgconfig binconfig
+
+EXTRA_OEMAKE="LIB=${libdir} exec_prefix=${exec_prefix} libdir=${libdir}"
+EXTRA_OECONF="--prefix=${libdir}"
 
 do_install_append_virtclass-native() {
 	:
@@ -25,9 +28,6 @@ PACKAGES =+ "${PN}-withsctp ${PN}-utils"
 FILES_${PN} = "${libexecdir}/* ${libdir}/lib*${SOLIBS} \
             ${sysconfdir} ${sharedstatedir} ${localstatedir} \
             ${base_libdir}/*${SOLIBS}"
-
-FILES_${PN}-withsctp = " \
-  ${libdir}/lksctp-tools/lib*"
 
 FILES_${PN}-dev += " \
   ${datadir}/lksctp-tools/checksctp.c \
