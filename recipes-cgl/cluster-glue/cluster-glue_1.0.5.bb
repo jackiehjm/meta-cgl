@@ -43,22 +43,22 @@ pkg_postinst_${PN} () {
 PACKAGES += "\
 	 ${PN}-plugin-test \
 	 ${PN}-plugin-test-dbg \
-	 ${PN}-plugin-test-dev \
+	 ${PN}-plugin-test-staticdev \
 	 ${PN}-plugin-stonith2 \
 	 ${PN}-plugin-stonith2-dbg \
-	 ${PN}-plugin-stonith2-dev \
+	 ${PN}-plugin-stonith2-staticdev \
 	 ${PN}-plugin-stonith2-ribcl \
 	 ${PN}-plugin-stonith-external \
 	 ${PN}-plugin-raexec \
 	 ${PN}-plugin-raexec-dbg \
-	 ${PN}-plugin-raexec-dev \
+	 ${PN}-plugin-raexec-staticdev \
 	 ${PN}-plugin-interfacemgr \
 	 ${PN}-plugin-interfacemgr-dbg \
-	 ${PN}-plugin-interfacemgr-dev \
+	 ${PN}-plugin-interfacemgr-staticdev \
 	 ${PN}-lrmtest \
 	 "
 
-FILES_${PN} = "/etc/ /usr/lib/lib*.so.* /usr/sbin /usr/share/cluster-glue/*sh /usr/share/cluster-glue/*pl\
+FILES_${PN} = "/etc/ /var /usr/lib/lib*.so.* /usr/sbin /usr/share/cluster-glue/*sh /usr/share/cluster-glue/*pl\
 	/usr/lib/heartbeat/transient-test.sh \
 	/usr/lib/heartbeat/logtest \
 	/usr/lib/heartbeat/ipctransientserver \
@@ -72,7 +72,7 @@ FILES_${PN} = "/etc/ /usr/lib/lib*.so.* /usr/sbin /usr/share/cluster-glue/*sh /u
 FILES_${PN}-dbg += "/usr/lib/heartbeat/.debug/"
 
 FILES_${PN}-plugin-test = "/usr/lib/heartbeat/plugins/test/test.so"
-FILES_${PN}-plugin-test-dev = "/usr/lib/heartbeat/plugins/test/test.*a"
+FILES_${PN}-plugin-test-staticdev = "/usr/lib/heartbeat/plugins/test/test.*a"
 FILES_${PN}-plugin-test-dbg = "/usr/lib/heartbeat/plugins/test/.debug/"
 FILES_${PN}-plugin-stonith2 = " \
 	/usr/lib/stonith/plugins/xen0-ha-dom0-stonith-helper \
@@ -82,15 +82,15 @@ FILES_${PN}-plugin-stonith2-ribcl = "/usr/lib/stonith/plugins/stonith2/ribcl.py"
 RDEPENDS_${PN}-plugin-stonith2-ribcl += "python"
 
 FILES_${PN}-plugin-stonith2-dbg = "/usr/lib/stonith/plugins/stonith2/.debug/"
-FILES_${PN}-plugin-stonith2-dev = "/usr/lib/stonith/plugins/stonith2/*.*a"
+FILES_${PN}-plugin-stonith2-staticdev = "/usr/lib/stonith/plugins/stonith2/*.*a"
 
 FILES_${PN}-plugin-stonith-external = "/usr/lib/stonith/plugins/external/"
 FILES_${PN}-plugin-raexec = "/usr/lib/heartbeat/plugins/RAExec/*.so"
-FILES_${PN}-plugin-raexec-dev = "/usr/lib/heartbeat/plugins/RAExec/*.*a"
+FILES_${PN}-plugin-raexec-staticdev = "/usr/lib/heartbeat/plugins/RAExec/*.*a"
 FILES_${PN}-plugin-raexec-dbg = "/usr/lib/heartbeat/plugins/RAExec/.debug/"
 
 FILES_${PN}-plugin-interfacemgr = "/usr/lib/heartbeat/plugins/InterfaceMgr/generic.so"
-FILES_${PN}-plugin-interfacemgr-dev = "/usr/lib/heartbeat/plugins/InterfaceMgr/generic.*a"
+FILES_${PN}-plugin-interfacemgr-staticdev = "/usr/lib/heartbeat/plugins/InterfaceMgr/generic.*a"
 FILES_${PN}-plugin-interfacemgr-dbg = "/usr/lib/heartbeat/plugins/InterfaceMgr/.debug/"
 
 FILES_${PN}-lrmtest = "/usr/share/cluster-glue/lrmtest/"
