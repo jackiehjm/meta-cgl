@@ -3,112 +3,95 @@ Warning is explained here
 http://gcc.gnu.org/viewcvs/trunk/gcc/doc/invoke.texi?r1=148037&r2=148053&diff_format=h
 
 -Khem
+-updated by Alexandru Vaduva - patch needed redone
 
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/apcsmart.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/apcsmart.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/apcsmart.c
-@@ -708,7 +708,6 @@ apcsmart_status(StonithPlugin * s)
- /*
-  * return the list of hosts configured for this device 
-  */
--
- static char **
- apcsmart_hostlist(StonithPlugin * s)
- {
-@@ -719,7 +718,7 @@ apcsmart_hostlist(StonithPlugin * s)
+diff -Naur a/lib/plugins/stonith/apcsmart.c b/lib/plugins/stonith/apcsmart.c
+--- a/lib/plugins/stonith/apcsmart.c	2014-07-09 17:14:24.492455034 +0200
++++ b/lib/plugins/stonith/apcsmart.c	2014-07-09 17:15:03.386817399 +0200
+@@ -719,7 +719,7 @@
  	}
  	ERRIFNOTCONFIGED(s,NULL);
  
 -	return OurImports->CopyHostList((const char **)ad->hostlist);
-+	return OurImports->CopyHostList(CONST_CAST(ad->hostlist));
++    return OurImports->CopyHostList(CONST_CAST(ad->hostlist));
  }
  
  static gboolean
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/external.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/external.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/external.c
-@@ -539,8 +539,7 @@ external_get_confignames(StonithPlugin*
- 		free(files);
+diff -Naur a/lib/plugins/stonith/external.c b/lib/plugins/stonith/external.c
+--- a/lib/plugins/stonith/external.c	2014-07-09 17:15:28.661753145 +0200
++++ b/lib/plugins/stonith/external.c	2014-07-09 17:17:03.873743634 +0200
+@@ -540,7 +540,7 @@
  		sd->confignames[dircount] = NULL;
  	}
--
+ 
 -	return (const char **)sd->confignames;
-+	return CONST_CAST(sd->confignames);
++    return CONST_CAST(sd->confignames);
  }
  
  /*
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/rhcs.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/rhcs.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/rhcs.c
-@@ -702,8 +702,7 @@ rhcs_get_confignames(StonithPlugin* p)
- 		free(files);
- 		sd->confignames[dircount] = NULL;
- 	}
--
--	return (const char **)sd->confignames;
-+	return CONST_CAST(sd->confignames);
- }
- 
- /*
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/meatware.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/meatware.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/meatware.c
-@@ -136,7 +136,7 @@ meatware_hostlist(StonithPlugin  *s)
+diff -Naur a/lib/plugins/stonith/meatware.c b/lib/plugins/stonith/meatware.c
+--- a/lib/plugins/stonith/meatware.c	2014-07-09 17:18:47.597375001 +0200
++++ b/lib/plugins/stonith/meatware.c	2014-07-09 17:19:35.943338541 +0200
+@@ -136,7 +136,7 @@
  		return(NULL);
  	}
  
 -	return OurImports->CopyHostList((const char **)nd->hostlist);
-+	return OurImports->CopyHostList(CONST_CAST(nd->hostlist));
++    return OurImports->CopyHostList(CONST_CAST(nd->hostlist));
  }
  
  /*
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/null.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/null.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/null.c
-@@ -126,7 +126,7 @@ null_hostlist(StonithPlugin  *s)
+diff -Naur a/lib/plugins/stonith/null.c b/lib/plugins/stonith/null.c
+--- a/lib/plugins/stonith/null.c	2014-07-09 17:20:12.389803230 +0200
++++ b/lib/plugins/stonith/null.c	2014-07-09 17:20:55.156001606 +0200
+@@ -126,7 +126,7 @@
  	struct pluginDevice*	nd = (struct pluginDevice*)s;
  
  	ERRIFWRONGDEV(s, NULL);
 -	return OurImports->CopyHostList((const char**)nd->hostlist);
-+	return OurImports->CopyHostList(CONST_CAST(nd->hostlist));
++    return OurImports->CopyHostList(CONST_CAST(nd->hostlist));
  }
  
  
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/rcd_serial.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/rcd_serial.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/rcd_serial.c
-@@ -347,7 +347,7 @@ rcd_serial_hostlist(StonithPlugin  *s)
+diff -Naur a/lib/plugins/stonith/rcd_serial.c b/lib/plugins/stonith/rcd_serial.c
+--- a/lib/plugins/stonith/rcd_serial.c	2014-07-09 17:21:12.603266573 +0200
++++ b/lib/plugins/stonith/rcd_serial.c	2014-07-09 17:21:56.341423862 +0200
+@@ -347,7 +347,7 @@
  		return(NULL);
  	}
  
 -	return OurImports->CopyHostList((const char **)rcd->hostlist);
-+	return OurImports->CopyHostList(CONST_CAST(rcd->hostlist));
++    return OurImports->CopyHostList(CONST_CAST(rcd->hostlist));
  }
  
  /*
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/ssh.c
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/ssh.c
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/ssh.c
-@@ -161,7 +161,7 @@ ssh_hostlist(StonithPlugin  *s)
+diff -Naur a/lib/plugins/stonith/rhcs.c b/lib/plugins/stonith/rhcs.c
+--- a/lib/plugins/stonith/rhcs.c	2014-07-09 17:17:27.652742171 +0200
++++ b/lib/plugins/stonith/rhcs.c	2014-07-09 17:18:18.562597957 +0200
+@@ -703,7 +703,7 @@
+ 		sd->confignames[dircount] = NULL;
+ 	}
+ 
+-	return (const char **)sd->confignames;
++    return CONST_CAST(sd->confignames);
+ }
+ 
+ /*
+diff -Naur a/lib/plugins/stonith/ssh.c b/lib/plugins/stonith/ssh.c
+--- a/lib/plugins/stonith/ssh.c	2014-07-09 17:22:15.320624229 +0200
++++ b/lib/plugins/stonith/ssh.c	2014-07-09 17:22:53.499015642 +0200
+@@ -161,7 +161,7 @@
  		return(NULL);
  	}
  
 -	return OurImports->CopyHostList((const char **)sd->hostlist);
-+	return OurImports->CopyHostList(CONST_CAST(sd->hostlist));
++    return OurImports->CopyHostList(CONST_CAST(sd->hostlist));
  }
  
  
-Index: Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/stonith_plugin_common.h
-===================================================================
---- Reusable-Cluster-Components-glue-1.0.5.orig/lib/plugins/stonith/stonith_plugin_common.h
-+++ Reusable-Cluster-Components-glue-1.0.5/lib/plugins/stonith/stonith_plugin_common.h
+diff -Naur a/lib/plugins/stonith/stonith_plugin_common.h b/lib/plugins/stonith/stonith_plugin_common.h
+--- a/lib/plugins/stonith/stonith_plugin_common.h	2014-07-09 17:23:16.954027367 +0200
++++ b/lib/plugins/stonith/stonith_plugin_common.h	2014-07-09 17:24:38.538609129 +0200
 @@ -123,5 +123,8 @@
      return; \
    }

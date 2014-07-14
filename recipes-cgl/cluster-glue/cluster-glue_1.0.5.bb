@@ -3,13 +3,16 @@ the Heartbeat/Pacemaker cluster stack. In essence, Glue is everything that \
 is not the cluster messaging layer (Heartbeat), nor the cluster resource manager \
 (Pacemaker), nor a Resource Agent."
 
-LICENSE = "GPL"
+LICENSE = "GPLv2"
 DEPENDS = "libxml2 libtool glib-2.0 bzip2 util-linux"
 
 PR = "r3"
 
 SRC_URI = " \
 	http://hg.linux-ha.org/glue/archive/glue-${PV}.tar.bz2 \
+    file://glue-remove-getpid-check.patch \
+    file://fix-const-cast.patch \
+    file://volatiles \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "d2b6f798e58ef2497526e404b8ad640a"
@@ -19,7 +22,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 
 inherit autotools
 
-S = "${WORKDIR}/Reusable-Cluster-Components-glue-${PV}"
+S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
 
 EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient"
 
