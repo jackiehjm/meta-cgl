@@ -25,7 +25,7 @@ inherit autotools
 
 S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
 
-EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient"
+EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient --disable-fatal-warnings"
 
 do_install_append() {
 	install -d ${D}${sysconfdir}/default/volatiles
