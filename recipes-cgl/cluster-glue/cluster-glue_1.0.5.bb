@@ -10,6 +10,7 @@ PR = "r3"
 
 SRC_URI = " \
 	http://hg.linux-ha.org/glue/archive/glue-${PV}.tar.bz2 \
+    file://glue-repair-libxml-support.patch \
     file://glue-remove-getpid-check.patch \
     file://fix-const-cast.patch \
     file://volatiles \
