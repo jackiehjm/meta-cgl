@@ -1,13 +1,15 @@
 DESCRIPTION = "OCF resource agents for use by compatible cluster managers"
-LICENSE = "GPL"
+LICENSE = "GPLv2"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = "cluster-glue"
 
-PR = "r1"
+#PR = "r1"
 
 SRC_URI = " \
     http://pkgs.fedoraproject.org/repo/pkgs/resource-agents/agents-${PV}.tar.bz2/fcaa2cfd83a28d1965200e11db2ddd41/agents-${PV}.tar.bz2 \
 	file://fix-header-defs-lookup.patch \
 	file://disable-doc-build.patch \
+    file://fix-fortify_sources-optimization-calls.patch \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "fcaa2cfd83a28d1965200e11db2ddd41"

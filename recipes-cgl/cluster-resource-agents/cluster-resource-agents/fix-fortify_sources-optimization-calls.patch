@@ -1,0 +1,12 @@
+diff -Naur a/configure.in b/configure.in
+--- a/configure.in	2014-07-15 08:25:40.287040627 +0200
++++ b/configure.in	2014-07-15 08:25:14.864135440 +0200
+@@ -643,7 +643,7 @@
+         CFLAGS="$CFLAGS -g"
+ 	enable_fatal_warnings=no
+ else
+-        CFLAGS="$CFLAGS -ggdb3 -O0"
++        CFLAGS="$CFLAGS -ggdb3 -O2"
+ 
+ 	# We had to eliminate -Wnested-externs because of libtool changes
+ 	# Also remove -Waggregate-return because we use one libnet
