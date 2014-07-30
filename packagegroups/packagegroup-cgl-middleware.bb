@@ -48,6 +48,14 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     strongswan \
     vlan \
     corosync \
+    iscsi-initiator-utils \
+    lksctp-tools \
+    openais \
+    openipmi \
+    openhpi \
+    pacemaker \
+    cluster-glue \
+    cluster-resource-agents \
     "
 
 DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"

@@ -11,6 +11,12 @@ PACKAGES = "packagegroup-cgl-swdevtools"
 
 RDEPENDS_packagegroup-cgl-swdevtools = " \
     libuio \
+    libcap-ng \
+    libwww-perl \
+    libtest-pod-perl \
+    libsocket6-perl \
+    libmailtools-perl \
+    libhtml-tagset-perl \
     "
 
 RRECOMMENDS_packagegroup-cgl-swdevtools = ""
