@@ -19,7 +19,7 @@ SRC_URI[md5sum] = "ac4a0d206736f0827d419a03b238da4e"
 SRC_URI[sha256sum] = "712248bf5698c0bb39c77c3f0fdaa493b92037069401121b801294487f638c26"
 
 
-inherit autotools-brokensep update-rc.d
+inherit autotools-brokensep pkgconfig update-rc.d
 
 INITSCRIPT_NAME = "corosync-daemon"
 
