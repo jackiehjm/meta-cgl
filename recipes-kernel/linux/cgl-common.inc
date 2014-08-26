@@ -12,4 +12,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00011-raid-1.cfg \
             file://cfg/00012-hyper-threading.cfg \
             file://cfg/00013-dot1q-vlans.cfg \
+            file://cfg/00014-selinux.cfg \
            "
