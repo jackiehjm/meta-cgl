@@ -16,4 +16,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00015-managing-transient-data.cfg \
             file://cfg/00016-dynamic-probe-insertion-kprobe.cfg \
             file://cfg/00018-ipsec.cfg \
+            file://cfg/00019-raid-0.cfg \
            "
