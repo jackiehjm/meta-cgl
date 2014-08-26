@@ -19,4 +19,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00019-raid-0.cfg \
             file://cfg/00021-sctp.cfg \
             file://cfg/00022-coredump.cfg \
+            file://cfg/00023-open-scsi.cfg \
            "
