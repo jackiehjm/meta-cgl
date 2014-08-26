@@ -8,4 +8,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00007-device-mapper-multipath.cfg \
             file://cfg/00008-libcgroup.cfg \
             file://cfg/00009-filesystem-acl.cfg \
+            file://cfg/00010-ext4.cfg \
            "
