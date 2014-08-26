@@ -6,4 +6,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00004-kgdb.cfg \
             file://cfg/00005-quota.cfg \
             file://cfg/00007-device-mapper-multipath.cfg \
+            file://cfg/00008-libcgroup.cfg \
            "
