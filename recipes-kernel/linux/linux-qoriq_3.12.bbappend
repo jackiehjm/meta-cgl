@@ -16,4 +16,5 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                            cfg/00013-dot1q-vlans.cfg \
                            cfg/00014-selinux.cfg \
                            cfg/00015-managing-transient-data.cfg \
+                           cfg/00016-dynamic-probe-insertion-kprobe.cfg \
                           "
