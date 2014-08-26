@@ -12,4 +12,5 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                            cfg/00009-filesystem-acl.cfg \
                            cfg/00010-ext4.cfg \
                            cfg/00011-raid-1.cfg \
+                           cfg/00012-hyper-threading.cfg \
                           "

@@ -10,4 +10,5 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00009-filesystem-acl.cfg \
             file://cfg/00010-ext4.cfg \
             file://cfg/00011-raid-1.cfg \
+            file://cfg/00012-hyper-threading.cfg \
            "
