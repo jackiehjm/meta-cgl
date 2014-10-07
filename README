@@ -46,8 +46,13 @@ Maintainers: Enea Linux Team <linux-maintainers@enea.com>
 Contributing
 ============
 
-Contributions and patches can be sent to the Enea Linux mailing
-list: enealinux@lists.enea.com
+Contributions and patches can be sent to the Yocto Project mailing
+list: yocto@yoctoproject.org"
+As a backup alternative the Enea Linux mailing list can be
+used: enealinux@lists.enea.com
+
+When sending patches please take a look at the contribution guide available
+here: https://wiki.yoctoproject.org/wiki/Contribution_Guidelines
 
 
 Table of Contents
@@ -88,7 +93,7 @@ other layers needed. Adapt the below list to proper format.
     meta-cloud-services/meta-openstack
 
 A BBMASK definition is required because of some recipes duplicate existance:
-    BBMASK = "meta-security/recipes-security/libcap-ng"
+    BBMASK = "meta-security/recipes-security/libcap-ng|meta-openembedded/meta-oe/recipes-support/multipath-tools"
 
 
 II. Misc
@@ -125,3 +130,17 @@ or programming language operations required in the application system at
 a later stage.
     Interface - shared boundary or connection between two dissimilar
 objects, devices or systems.
+
+    Users of this layer might experience a problem with openipmi package, if this happens then this
+package can be removed from packagegroup-cgl-middleware.bb package group and exclude it from the
+image used for building a CGL compliant image.
+    The latest tested head for the depending layers were:
+        poky:                   bb00d83675a1293ee8d7a3ac22cf01243fa2397b
+        meta-cloud-services:    a06e28ced8f622dbe6d6fbd9bea20b215d8ac938
+        meta-openclovis:        83b1f76a75266743dc9eb0238039d5b973ad8ac0
+        meta-qt3:               3016129d90b7ac8517a5227d819f10ad417b5b45
+        meta-security:          b3f08c7b2bdf1bea28b081319d7c135af45f39e3
+        meta-selinux:           1699b56fd801f0194b708b4a1d9d95a831a3bbe4
+        meta-virtualization:    b94455174264240bf8519e4148ea5f1fb38d55c6
+    The machine for which this layer was tested are: 'qemuppc' and 'p2020rdb'. The latest tested head
+for meta-fsl-ppc layer is:      d953212ae5936a7d969d13801b0c2c1eb65cee6f
