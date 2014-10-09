@@ -30,6 +30,9 @@ This layer depends on:
   URI: git://git.yoctoproject.org/meta-security
   branch: master
 
+  URI: git://git.yoctoproject.org/meta-virtualization
+  branch: master
+
 
 Source code
 ===========
