@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount OCFS2 volumes
+Requires=o2cb.service
+After=network.target o2cb.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/mount -at ocfs2
+ExecStop=/bin/umount -a -t ocfs2
+
+[Install]
+WantedBy=multi-user.target

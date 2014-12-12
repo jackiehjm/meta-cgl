@@ -1,0 +1,51 @@
+From 507f5cf55e25fd12d138cc28eb061c7e0b8615b8 Mon Sep 17 00:00:00 2001
+From: Li xin <lixin.fnst@cn.fujitsu.com>
+Date: Fri, 12 Dec 2014 16:14:10 +0900
+Subject: [PATCH 2/3] ocfs2_fs.h mount.ocfs2.c: fix compile error
+
+Upstream-Status: pending
+
+Signed-off-by: Li Xin <lixin.fnst@cn.fujitsu.com>
+---
+ include/ocfs2-kernel/ocfs2_fs.h | 2 +-
+ mount.ocfs2/mount.ocfs2.c       | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/include/ocfs2-kernel/ocfs2_fs.h b/include/ocfs2-kernel/ocfs2_fs.h
+index 2140bb3..00add7b 100644
+--- a/include/ocfs2-kernel/ocfs2_fs.h
++++ b/include/ocfs2-kernel/ocfs2_fs.h
+@@ -1311,7 +1311,7 @@ static inline int ocfs2_sprintf_system_inode_name(char *buf, int len,
+ }
+ 
+ static inline void ocfs2_set_de_type(struct ocfs2_dir_entry *de,
+-				    umode_t mode)
++				     unsigned short mode)
+ {
+ 	de->file_type = ocfs2_type_by_mode[(mode & S_IFMT)>>S_SHIFT];
+ }
+diff --git a/mount.ocfs2/mount.ocfs2.c b/mount.ocfs2/mount.ocfs2.c
+index f820a30..3e5b362 100644
+--- a/mount.ocfs2/mount.ocfs2.c
++++ b/mount.ocfs2/mount.ocfs2.c
+@@ -261,7 +261,7 @@ int main(int argc, char **argv)
+ 	char *extra = NULL;
+ 	int dev_ro = 0;
+ 	char *hbstr = NULL;
+-	char stackstr[strlen(OCFS2_CLUSTER_STACK_ARG) + OCFS2_STACK_LABEL_LEN + 1] = "";
++	char stackstr[strlen(OCFS2_CLUSTER_STACK_ARG) + OCFS2_STACK_LABEL_LEN + 1];
+ 	ocfs2_filesys *fs = NULL;
+ 	struct o2cb_cluster_desc cluster;
+ 	struct o2cb_region_desc desc;
+@@ -269,6 +269,8 @@ int main(int argc, char **argv)
+ 	int hb_started = 0;
+ 	struct stat statbuf;
+ 
++	stackstr[0] = '\0';
++
+ 	initialize_ocfs_error_table();
+ 	initialize_o2dl_error_table();
+ 	initialize_o2cb_error_table();
+-- 
+1.8.4.2
+

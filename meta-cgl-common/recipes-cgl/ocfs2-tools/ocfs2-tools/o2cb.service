@@ -1,0 +1,12 @@
+[Unit]
+Description=Load O2CB cluster services
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/ocfs2-tools/o2cb-helper start
+ExecStop=/usr/lib/ocfs2-tools/o2cb-helper stop
+
+[Install]
+WantedBy=multi-user.target
