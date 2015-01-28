@@ -40,6 +40,12 @@ RDEPENDS_packagegroup-cgl-applications = " \
     quota \
     smartmontools \
     monit \
+    syslog-ng \
+    ocfs2-tools \
+    logcheck \
+    samhain-client \
+    samhain-server \
+    audit \
     "
 
 LTTNG ?= "\

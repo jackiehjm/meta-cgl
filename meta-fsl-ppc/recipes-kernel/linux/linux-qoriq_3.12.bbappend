@@ -22,4 +22,5 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00021-sctp.cfg \
                         cfg/00022-coredump.cfg \
                         cfg/00023-open-scsi.cfg \
+                        cfg/00024-ftrace.cfg \
                         "

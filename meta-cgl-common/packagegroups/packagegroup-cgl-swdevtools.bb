@@ -17,6 +17,7 @@ RDEPENDS_packagegroup-cgl-swdevtools = " \
     libsocket6-perl \
     libmailtools-perl \
     libhtml-tagset-perl \
+    numactl \
     "
 
 RRECOMMENDS_packagegroup-cgl-swdevtools = ""

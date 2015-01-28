@@ -56,6 +56,8 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     pacemaker \
     cluster-glue \
     cluster-resource-agents \
+    ifenslave \
+    drbd \
     "
 
 DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
