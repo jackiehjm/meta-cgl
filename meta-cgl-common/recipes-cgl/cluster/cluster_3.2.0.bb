@@ -3,7 +3,9 @@ DESCRIPTION = "Red Hat Cluster"
 SECTION = "libs"
 HOMEPAGE = "https://fedorahosted.org/cluster/wiki/HomePage"
 
-SRC_URI = "https://fedorahosted.org/releases/c/l/cluster/${BP}.tar.xz"
+SRC_URI = "https://fedorahosted.org/releases/c/l/cluster/${BP}.tar.xz \
+           file://0001-Fix-the-kernel-source-patch.patch"
+
 
 SRC_URI[md5sum] = "300d83dbbc525c3da21c2e961271c84b"
 SRC_URI[sha256sum] = "4d340338c2376d369cb223469fa1a3356cce9ab5b2a0a0a33256ade2dbbe02d1"
