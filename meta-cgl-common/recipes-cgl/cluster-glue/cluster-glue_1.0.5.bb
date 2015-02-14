@@ -6,8 +6,6 @@ is not the cluster messaging layer (Heartbeat), nor the cluster resource manager
 LICENSE = "GPLv2"
 DEPENDS = "libxml2 libtool glib-2.0 bzip2 util-linux"
 
-PR = "r3"
-
 SRC_URI = " \
 	http://hg.linux-ha.org/glue/archive/glue-${PV}.tar.bz2 \
     file://glue-repair-libxml-support.patch \
@@ -27,6 +25,8 @@ inherit autotools
 S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
 
 EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient --disable-fatal-warnings"
+
+CACHED_CONFIGUREVARS="ac_cv_path_XML2CONFIG=0"
 
 do_configure_prepend() {
     ln -sf ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml2/libxml ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml
@@ -83,7 +83,6 @@ FILES_${PN}-plugin-stonith2 = " \
 	/usr/lib/stonith/plugins/stonith2/*.so \
 	"
 FILES_${PN}-plugin-stonith2-ribcl = "/usr/lib/stonith/plugins/stonith2/ribcl.py"
-RDEPENDS_${PN}-plugin-stonith2-ribcl += "python"
 
 FILES_${PN}-plugin-stonith2-dbg = "/usr/lib/stonith/plugins/stonith2/.debug/"
 FILES_${PN}-plugin-stonith2-staticdev = "/usr/lib/stonith/plugins/stonith2/*.*a"
@@ -98,3 +97,8 @@ FILES_${PN}-plugin-interfacemgr-staticdev = "/usr/lib/heartbeat/plugins/Interfac
 FILES_${PN}-plugin-interfacemgr-dbg = "/usr/lib/heartbeat/plugins/InterfaceMgr/.debug/"
 
 FILES_${PN}-lrmtest = "/usr/share/cluster-glue/lrmtest/"
+
+RDEPENDS_${PN} += "perl"
+RDEPENDS_${PN}-plugin-stonith2 += "bash"
+RDEPENDS_${PN}-plugin-stonith-external += "bash python perl"
+RDEPENDS_${PN}-plugin-stonith2-ribcl += "python"
