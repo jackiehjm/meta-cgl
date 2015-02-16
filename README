@@ -57,6 +57,8 @@ used: enealinux@lists.enea.com
 When sending patches please take a look at the contribution guide available
 here: https://wiki.yoctoproject.org/wiki/Contribution_Guidelines
 
+example:
+git send-email -1 -M --to yocto@yoctoproject.org  --subject-prefix=meta-cgl][PATCH
 
 Table of Contents
 =================
@@ -96,7 +98,7 @@ other layers needed. Adapt the below list to proper format.
     meta-cloud-services/meta-openstack
 
 A BBMASK definition is required because of some recipes duplicate existance:
-    BBMASK = "meta-security/recipes-security/libcap-ng|meta-openembedded/meta-oe/recipes-support/multipath-tools"
+    BBMASK = "meta-openembedded/meta-oe/recipes-support/multipath-tools"
 
 
 II. Misc
