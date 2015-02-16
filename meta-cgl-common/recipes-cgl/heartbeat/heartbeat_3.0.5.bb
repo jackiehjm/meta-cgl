@@ -22,7 +22,7 @@ It implements the following kinds of heartbeats: \
 "
 HOMEPAGE = "http://linux-ha.org/"
 SECTION = "System Environment/Daemons"
-LICENSE = "GPLv2 | LGPLv2+"
+LICENSE = "GPLv2 & LGPLv2+"
 LIC_FILES_CHKSUM = " \
     file://doc/COPYING;md5=c93c0550bd3173f4504b2cbd8991e50b \
     file://doc/COPYING.LGPL;md5=d8045f3b8f929c1cb29a1e3fd737b499 \
