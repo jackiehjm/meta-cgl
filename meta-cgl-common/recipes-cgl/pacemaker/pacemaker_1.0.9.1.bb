@@ -26,6 +26,7 @@ SRC_URI = " \
     file://fix-header-defs-lookup.patch \
     file://pacemaker-remove-ptest-functionality.patch \
     file://pacemaker-fix-xml-config.patch \
+    file://pacemaker-no-bash.patch \
 	file://volatiles \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
@@ -80,5 +81,5 @@ RDEPENDS_${PN}-hb2openais += "python-core"
 FILES_${PN}-haresources2cib = "${libdir}/heartbeat/haresources2cib.py"
 RDEPENDS_${PN}-haresources2cib += "python-core"
 FILES_${PN}-tests = "${datadir}/pacemaker/tests ${datadir}/pacemaker/stonithdtest ${libdir}/heartbeat/atest ${libdir}/heartbeat/stonithdtest/*"
-RDEPENDS_${PN}-test += "python-core"
+RDEPENDS_${PN}-tests += "python-core bash"
 FILES_${PN}-snmp = "${datadir}/snmp/mibs/PCMK-MIB.txt"
