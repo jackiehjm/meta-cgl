@@ -25,12 +25,13 @@ SRC_URI = " \
     file://pacemaker-dont-use-help2man.patch \
     file://fix-header-defs-lookup.patch \
     file://pacemaker-remove-ptest-functionality.patch \
+    file://pacemaker-fix-xml-config.patch \
 	file://volatiles \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "103fb2e804be3f8ace17021c5d9ad15d"
 SRC_URI[sha256sum] = "aabfc9ee1c66804151d973d0ed0323798ffebe49e1c2219fa804dc6898a69a1e"
-inherit autotools-brokensep python-dir
+inherit autotools-brokensep python-dir pkgconfig
 
 S = "${WORKDIR}/pacemaker-1.0-Pacemaker-${PV}"
 
