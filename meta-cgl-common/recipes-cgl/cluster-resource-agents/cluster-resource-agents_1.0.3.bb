@@ -76,9 +76,17 @@ FILES_${PN} += " \
 	${datadir}/resource-agents/ra-api-1.dtd \
 	"
 
+RDEPENDS_ocft += " \
+	bash \
+"
+
 FILES_ocft += " \
 	${datadir}/resource-agents/ocft \
 	${sbindir}/ocft \
 	"
+
+RDEPENDS_${PN} += " \
+	bash \
+"
 
 FILES_${PN}-dbg += "${libdir}/heartbeat/.debug/ ${libdir}/ocf/resource.d/heartbeat/.debug/"
