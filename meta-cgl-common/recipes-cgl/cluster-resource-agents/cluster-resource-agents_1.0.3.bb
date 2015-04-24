@@ -13,6 +13,7 @@ SRC_URI = " \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "fcaa2cfd83a28d1965200e11db2ddd41"
+SRC_URI[sha256sum] = "09b58332e34cf128c8d53d5bb4b3f61e402c2e0c0c809f5abae53ca144ad101e"
 
 inherit autotools
 
