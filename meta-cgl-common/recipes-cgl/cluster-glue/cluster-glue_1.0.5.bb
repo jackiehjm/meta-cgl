@@ -4,7 +4,7 @@ is not the cluster messaging layer (Heartbeat), nor the cluster resource manager
 (Pacemaker), nor a Resource Agent."
 
 LICENSE = "GPLv2"
-DEPENDS = "libxml2 libtool glib-2.0 bzip2 util-linux"
+DEPENDS = "libxml2 libtool glib-2.0 bzip2 util-linux net-snmp openhpi"
 
 SRC_URI = " \
 	http://hg.linux-ha.org/glue/archive/glue-${PV}.tar.bz2 \
