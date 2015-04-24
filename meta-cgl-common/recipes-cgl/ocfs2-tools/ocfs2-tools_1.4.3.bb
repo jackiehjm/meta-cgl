@@ -24,7 +24,7 @@ SRC_URI[md5sum] = "296f1242f4d00d188231d726d7a1d148"
 SRC_URI[sha256sum] = "a809f03c62e515a4c23e98c4b4c3f8150377af2cf44cd2a2ee56e175b0e4d0b3"
 S = "${WORKDIR}/ocfs2-tools-ocfs2-tools-1.4.3"
 inherit autotools-brokensep pkgconfig
-DEPENDS = "corosync openais clutter-1.0 cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs"
+DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs"
 RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
 ASNEEDED_pn-${PN} = ""
 PARALLEL_MAKE = ""
