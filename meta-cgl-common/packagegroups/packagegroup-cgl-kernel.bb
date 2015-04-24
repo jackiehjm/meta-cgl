@@ -3,7 +3,7 @@ DESCRIPTION = "This package group contains hardened device drivers, HW configura
                management, standard, high availability, service and co-processor interfaces."
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 inherit packagegroup
 

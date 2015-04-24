@@ -2,7 +2,7 @@ SUMMARY = "Software development tools packages required to satisfy the Carrier G
 DESCRIPTION = "This package group contains programs or applications used to create, debug, maintain, \
                or otherwise support other programs and applications."
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta-cgl/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 inherit packagegroup
 
