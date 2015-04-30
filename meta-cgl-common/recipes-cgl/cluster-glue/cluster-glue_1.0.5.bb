@@ -13,6 +13,7 @@ SRC_URI = " \
     file://glue-remove-getpid-check.patch \
     file://fix-const-cast.patch \
     file://volatiles \
+    file://tmpfiles \
 	"
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "d2b6f798e58ef2497526e404b8ad640a"
@@ -39,10 +40,18 @@ do_configure_prepend() {
 do_install_append() {
 	install -d ${D}${sysconfdir}/default/volatiles
 	install -m 0644 ${WORKDIR}/volatiles ${D}${sysconfdir}/default/volatiles/04_cluster-glue
+	install -d ${D}${sysconfdir}/tmpfiles.d
+	install -m 0644 ${WORKDIR}/tmpfiles ${D}${sysconfdir}/tmpfiles.d/${PN}.conf
 }
 
 pkg_postinst_${PN} () {
-	/etc/init.d/populate-volatile.sh update
+	if [ -z "$D" ]; then
+		if type systemd-tmpfiles >/dev/null; then
+			systemd-tmpfiles --create
+		elif [ -e ${sysconfdir}/init.d/populate-volatile.sh ]; then
+			${sysconfdir}/init.d/populate-volatile.sh update
+		fi
+	fi
 }
 
 PACKAGES += "\
