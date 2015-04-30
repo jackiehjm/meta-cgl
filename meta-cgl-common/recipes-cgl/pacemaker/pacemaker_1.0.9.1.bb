@@ -32,13 +32,17 @@ SRC_URI = " \
 SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 SRC_URI[md5sum] = "103fb2e804be3f8ace17021c5d9ad15d"
 SRC_URI[sha256sum] = "aabfc9ee1c66804151d973d0ed0323798ffebe49e1c2219fa804dc6898a69a1e"
-inherit autotools-brokensep python-dir pkgconfig
+inherit autotools-brokensep python-dir pkgconfig useradd
 
 S = "${WORKDIR}/pacemaker-1.0-Pacemaker-${PV}"
 
 EXTRA_OECONF = "--with-ais --without-heartbeat --disable-fatal-warnings --disable-pretty"
 
 CFLAGS += "-I${STAGING_INCDIR}/heartbeat -lncurses"
+
+USERADD_PACKAGES = "${PN}"
+USERADD_PARAM_${PN} = "--home-dir=${localstatedir}/lib/heartbeat -g haclient -r hacluster"
+GROUPADD_PARAM_${PN} = "-r haclient"
 
 do_install_append() {
 	install -d ${D}${sysconfdir}/default/volatiles
@@ -49,9 +53,6 @@ do_install_append() {
 }
 
 pkg_postinst_${PN} () {
-	set -e
-	grep haclient /etc/group || addgroup haclient
-	grep hacluster /etc/passwd || adduser --disabled-password --home=${localstatedir}/lib/heartbeat --ingroup haclient -g "HA cluster" hacluster
 	/etc/init.d/populate-volatile.sh update
 }
 FILES_${PN}-doc += "${datadir}/pacemaker/crm_cli.txt ${datadir}/pacemaker/templates/"
