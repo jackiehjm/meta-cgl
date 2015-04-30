@@ -20,13 +20,17 @@ SRC_URI[sha256sum] = "0e1922373aba1c3811f6ef61559a9c407c0bec71d2ebc451a4db5b940d
 
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 
-inherit autotools
+inherit autotools useradd
 
 S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
 
 EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient --disable-fatal-warnings"
 
 CACHED_CONFIGUREVARS="ac_cv_path_XML2CONFIG=0"
+
+USERADD_PACKAGES = "${PN}"
+USERADD_PARAM_${PN} = "--home-dir=${localstatedir}/lib/heartbeat -g haclient -r hacluster"
+GROUPADD_PARAM_${PN} = "-r haclient"
 
 do_configure_prepend() {
     ln -sf ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml2/libxml ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml
@@ -38,9 +42,6 @@ do_install_append() {
 }
 
 pkg_postinst_${PN} () {
-	set -e
-	grep haclient /etc/group || addgroup haclient
-	grep hacluster /etc/passwd || adduser --disabled-password --home=${localstatedir}/lib/heartbeat --ingroup haclient -g "HA cluster" hacluster
 	/etc/init.d/populate-volatile.sh update
 }
 
