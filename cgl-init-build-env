@@ -12,7 +12,7 @@ unset CUSTOM_SCRIPTS
 unset DISTRO
 unset DOWNLOAD_DLDIR
 unset DOWNLOAD_MIRRORS
-unset ENEAROOT
+unset CGLROOT
 unset EXITME
 unset LOCAL_CONF_EXISTS
 unset MACHINE
@@ -76,7 +76,7 @@ OPTIONS:
 EOF
 }
 
-SSTATE_MIRRORS='http://linux.enea.com/${DISTRO_VERSION}/sstate-cache/PATH'
+#SSTATE_MIRRORS='http://linux.enea.com/${DISTRO_VERSION}/sstate-cache/PATH'
 
 while getopts ":hb:c:d:f:g:j:k:l:m:ts:" OPTION; do
     case $OPTION in
@@ -125,8 +125,8 @@ while getopts ":hb:c:d:f:g:j:k:l:m:ts:" OPTION; do
 done
 
 METALAYERS="$METALAYERS,meta-cloud-services/meta-openstack,meta-openembedded/meta-filesystems,meta-openembedded/meta-networking,meta-openembedded/meta-oe,meta-openembedded/meta-perl,meta-openembedded/meta-python"
-ENEAROOT="$(pwd)"
-ENEAROOT=$(readlink -f "$ENEAROOT")
+CGLROOT="$(pwd)"
+CGLROOT=$(readlink -f "$CGLROOT")
 DISTRO="poky-cgl"
 
 if [[ ! -d $SSTATE_DIR && ! -z $SSTATE_DIR ]]; then
@@ -167,22 +167,21 @@ else
     source ./oe-init-build-env $BUILD_PATH
 
     if [[ -n $LOCAL_CONF_EXISTS ]]; then
-        sed -i \
-            -e "s|^#BB_NUMBER_THREADS.*|BB_NUMBER_THREADS \?= \"$NUM_CORES\"|" \
-            -e "s|^#PARALLEL_MAKE.*|PARALLEL_MAKE \?= \"-j $NUM_CORES\"|" \
-            -e 's|^DISTRO ?= "poky"|DISTRO ?= "enea"|' \
-            conf/local.conf
-        echo "*** Info: Setting BB_NUMBER_THREADS to $NUM_CORES"
-        echo "*** Info: Setting PARALLEL_MAKE to -j$NUM_CORES"
-        echo "*** Info: Setting DISTRO to enea"
+## Commenting this since this is not mandatory since latest Yocto releases.
+#        sed -i \
+#            -e "s|^#BB_NUMBER_THREADS.*|BB_NUMBER_THREADS \?= \"$NUM_CORES\"|" \
+#            -e "s|^#PARALLEL_MAKE.*|PARALLEL_MAKE \?= \"-j $NUM_CORES\"|" \
+#            conf/local.conf
+#        echo "*** Info: Setting BB_NUMBER_THREADS to $NUM_CORES"
+#        echo "*** Info: Setting PARALLEL_MAKE to -j$NUM_CORES"
 
         if [[ -n $MACHINE ]]; then
             sed -i -e "s|^MACHINE.*|MACHINE = \"$MACHINE\"|" conf/local.conf
             echo "*** Info: Setting MACHINE to $MACHINE"
         fi
 
-        echo "SSTATE_MIRRORS ?= \"file://.* $SSTATE_MIRRORS\"" >> conf/local.conf
-        echo "*** Info: Setting SSTATE_MIRRORS to http://linux.enea.com"
+#        echo "SSTATE_MIRRORS ?= \"file://.* $SSTATE_MIRRORS\"" >> conf/local.conf
+#        echo "*** Info: Setting SSTATE_MIRRORS to http://linux.enea.com"
 
         if [[ -n $SSTATE_DIR ]]; then
             sed -i -e "s|^#SSTATE_DIR ?=.*|SSTATE_DIR ?= \"$SSTATE_DIR\"|" conf/local.conf
@@ -192,17 +191,17 @@ else
 #        sed -i -e 's|^PACKAGE_CLASSES ?= "package_rpm"|PACKAGE_CLASSES ?= "package_ipk"|' conf/local.conf
 #        echo "*** Info: Setting PACKAGE_CLASSES to ipk"
 
-        echo "SOURCE_MIRROR_URL ?= \"$DOWNLOAD_MIRRORS\"" >> conf/local.conf
-        echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
-        echo "*** Info: Setting SOURCE_MIRROR_URL to http://linux.enea.com"
+#        echo "SOURCE_MIRROR_URL ?= \"$DOWNLOAD_MIRRORS\"" >> conf/local.conf
+#        echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
+#        echo "*** Info: Setting SOURCE_MIRROR_URL to http://linux.enea.com"
 
-        if [[ -n $TESTING_ADDITIONS ]]; then
-            echo "INHERIT += \"distrodata\"" >> conf/local.conf
-            echo "*** Info: Inheriting  distrodata."
-        fi
+#        if [[ -n $TESTING_ADDITIONS ]]; then
+#            echo "INHERIT += \"distrodata\"" >> conf/local.conf
+#            echo "*** Info: Inheriting  distrodata."
+#        fi
 
-        echo -e '\nLICENSE_FLAGS_WHITELIST += "non-commercial"\n' >> conf/local.conf
-        echo "*** Info: Need to set LICENSE_FLAGS_WHITELIST for netperf"
+#        echo -e '\nLICENSE_FLAGS_WHITELIST += "non-commercial"\n' >> conf/local.conf
+#        echo "*** Info: Need to set LICENSE_FLAGS_WHITELIST for netperf"
 
          if [[ -n $DISTRO ]]; then
             sed -i -e "s|^DISTRO.*|DISTRO ?= \"$DISTRO\"|" conf/local.conf
@@ -232,7 +231,7 @@ else
     if [[ -n $BBLAYERS_CONF_EXISTS ]]; then
         if [[ ""x != "${METALAYERS}"x ]]; then
             for layer in $(echo $METALAYERS | tr ',' ' '); do
-                layer=$ENEAROOT/$layer
+                layer=$CGLROOT/$layer
                 if [[ ! -d $layer ]]; then
                     echo "*** Error: There is no meta-layer called: $layer"
                 else
@@ -253,7 +252,7 @@ unset CUSTOM_SCRIPTS
 unset DISTRO
 unset DOWNLOAD_DLDIR
 unset DOWNLOAD_MIRRORS
-unset ENEAROOT
+unset CGLROOT
 unset EXITME
 unset LOCAL_CONF_EXISTS
 unset MACHINE
