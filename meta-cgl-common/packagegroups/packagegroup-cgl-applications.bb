@@ -46,6 +46,8 @@ RDEPENDS_packagegroup-cgl-applications = " \
     samhain-client \
     samhain-server \
     audit \
+    crash \
+    pam-passwdqc \
     "
 
 LTTNG ?= "\
