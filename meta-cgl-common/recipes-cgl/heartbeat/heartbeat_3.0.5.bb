@@ -34,6 +34,7 @@ SRC_URI = " \
     file://ucast.c-fix-compile-errors.patch \
     file://configure.in-Error-and-warning-fix.patch \
     file://heartbeat-init.d-heartbeat.in-modify-parameter.patch \
+    file://heartbeat-bootstrap-libtool.patch \
     file://heartbeat.service \
 "
 SRC_URI[md5sum] = "396510e3c143a9c2288bc52cfc9caa3c"
