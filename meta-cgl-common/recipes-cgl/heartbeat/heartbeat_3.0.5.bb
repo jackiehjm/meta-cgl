@@ -40,7 +40,7 @@ SRC_URI = " \
 SRC_URI[md5sum] = "396510e3c143a9c2288bc52cfc9caa3c"
 SRC_URI[sha256sum] = "085013154511f3c270b5e9a3281732dbbb9812924ae24d9c3c6db1af4dd260d0"
 S = "${WORKDIR}/Heartbeat-3-0-7e3a82377fa8/"
-DEPENDS = "cluster-glue corosync"
+DEPENDS = "cluster-glue corosync gnutls"
 inherit autotools-brokensep pkgconfig useradd
 EXTRA_OECONF = " \
     STAGING_DIR_TARGET=${STAGING_DIR_TARGET} \
