@@ -100,10 +100,8 @@ do_install() {
     install -m 0600 ${S}/doc/authkeys ${D}/etc/ha.d/authkeys
 }
 
-inherit ${@base_contains('VIRTUAL-RUNTIME_init_manager','systemd','systemd','',d)}
-SYSTEMD_PACKAGES = "${PN}"
+inherit systemd
 SYSTEMD_SERVICE_${PN} = "heartbeat.service"
-SYSTEMD_AUTO_ENABLE = "disable"
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-r haclient"
