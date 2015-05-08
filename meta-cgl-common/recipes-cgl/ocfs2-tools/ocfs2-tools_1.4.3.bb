@@ -42,11 +42,8 @@ do_compile_prepend() {
     done
 }
 
-inherit ${@base_contains('VIRTUAL-RUNTIME_init_manager','systemd','systemd','', d)}
+inherit systemd
 SYSTEMD_SERVICE_${PN} = "o2cb.service ocfs2.service"
-SYSTEMD_AUTO_ENABLE = "enable"
-
-FILES_${PN} += "${@base_contains('VIRTUAL-RUNTIME_init_manager','systemd','${systemd_unitdir}','', d)}"
 
 do_install() {
     install -d ${D}/etc/init.d
