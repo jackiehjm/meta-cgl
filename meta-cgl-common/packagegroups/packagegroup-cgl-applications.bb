@@ -48,6 +48,8 @@ RDEPENDS_packagegroup-cgl-applications = " \
     audit \
     crash \
     pam-passwdqc \
+    libpam \
+    rsyslog \
     "
 
 LTTNG ?= "\
