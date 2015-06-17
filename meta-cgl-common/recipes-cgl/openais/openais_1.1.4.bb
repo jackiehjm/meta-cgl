@@ -3,16 +3,15 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4cb00dd52a063edbece6ae248a2ba663"
 DEPENDS = "cluster-glue corosync"
 
-#	ftp://ftp@openais.org/downloads/openais-${PV}/openais-${PV}.tar.gz
 
 SRC_URI = " \
-	ftp://ftp@tux.rainside.sk/gentoo/distfiles/openais-${PV}.tar.gz \
-	file://fix-lcrso-linkage.patch \
+    ftp://ftp@tux.rainside.sk/gentoo/distfiles/openais-${PV}.tar.gz \
+    file://fix-lcrso-linkage.patch \
     file://build-cleanup-configure-ac.patch \
     file://openais-fix-bash.patch \
 	"
-SRC_URI[md5sum] = "13d8d590f806fb396d750b086c6c0b78"
-SRC_URI[sha256sum] = "eeef58dd2df3eb16ba68b3fbdc6f0d4dfb537443f1c091ec6f0431594f2f00b6"
+SRC_URI[md5sum] = "e500ad3c49fdc45d8653f864e80ed82c"
+SRC_URI[sha256sum] = "974b4959f3c401c16156dab31e65a6d45bbf84dd85a88c2a362712e738c06934"
 
 inherit autotools pkgconfig
 
