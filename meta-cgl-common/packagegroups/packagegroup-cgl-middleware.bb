@@ -58,6 +58,7 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     cluster-resource-agents \
     ifenslave \
     drbd \
+    makedumpfile \
     "
 
 DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
