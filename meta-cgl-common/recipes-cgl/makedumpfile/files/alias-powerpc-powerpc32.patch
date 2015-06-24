@@ -1,3 +1,8 @@
+Create Alias for target for powerpc as powerpc32
+
+Signed-off-by: Siva Borra <siva.borra@enea.com>
+Upstream-status: Pending
+
 diff -rupN makedumpfile-1.5.8/Makefile makedumpfile-1.5.8/Makefile
 --- makedumpfile-1.5.8/Makefile	2015-03-24 02:58:33.000000000 +0100
 +++ makedumpfile-1.5.8/Makefile	2015-06-23 11:08:30.595655336 +0200
