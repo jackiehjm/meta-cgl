@@ -1,7 +1,7 @@
-diff -Naur a/configure.ac b/configure.ac
---- a/configure.ac	2014-07-15 15:11:25.789572061 +0200
-+++ b/configure.ac	2014-07-15 15:16:20.400941853 +0200
-@@ -62,6 +62,8 @@
+diff -Nurp corosync-1.4.7.orig/configure.ac corosync-1.4.7/configure.ac
+--- corosync-1.4.7.orig/configure.ac	2014-06-02 21:55:54.000000000 +0900
++++ corosync-1.4.7/configure.ac	2015-06-24 16:56:21.519999988 +0900
+@@ -60,6 +60,8 @@ AC_PROG_INSTALL
  AC_PROG_LN_S
  AC_PROG_MAKE_SET
  AC_PROG_RANLIB
@@ -10,16 +10,16 @@ diff -Naur a/configure.ac b/configure.ac
  AC_CHECK_PROGS([GROFF], [groff])
  AC_CHECK_PROGS([PKGCONFIG], [pkg-config])
  
-@@ -80,7 +82,7 @@
+@@ -78,7 +80,7 @@ AC_HEADER_SYS_WAIT
  AC_CHECK_HEADERS([arpa/inet.h fcntl.h limits.h netdb.h netinet/in.h stdint.h \
  		  stdlib.h string.h sys/ioctl.h sys/param.h sys/socket.h \
  		  sys/time.h syslog.h unistd.h sys/types.h getopt.h malloc.h \
--		  sys/sockio.h])
-+          sys/sockio.h utmpx.h ifaddrs.h stddef.h sys/file.h])
+-		  sys/sockio.h net/if_var.h])
++		  sys/sockio.h utmpx.h ifaddrs.h stddef.h sys/file.h])
  
  # Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-@@ -92,31 +94,33 @@
+@@ -90,30 +92,32 @@ AC_TYPE_INT64_T
  AC_TYPE_INT8_T
  AC_TYPE_SIZE_T
  AC_TYPE_SSIZE_T
@@ -48,11 +48,10 @@ diff -Naur a/configure.ac b/configure.ac
  AC_CHECK_FUNCS([alarm alphasort atexit bzero dup2 endgrent endpwent fcntl \
  		getcwd getpeerucred getpeereid gettimeofday inet_ntoa memmove \
  		memset mkdir scandir select socket strcasecmp strchr strdup \
- 		strerror strrchr strspn strstr pthread_spin_lock \
- 		pthread_spin_unlock pthread_setschedparam \
+ 		strerror strrchr strspn strstr pthread_setschedparam \
 -		sched_get_priority_max sched_setscheduler])
 +		sched_get_priority_max sched_setscheduler \
-+        clock_gettime ftruncate gethostname localtime_r munmap strtol])
++		clock_gettime ftruncate gethostname localtime_r munmap strtol])
  
  AC_CONFIG_FILES([Makefile
  		 exec/Makefile

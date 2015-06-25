@@ -1,8 +1,7 @@
-Make docs optional
-
---- a/configure.ac
-+++ b/configure.ac
-@@ -432,7 +432,7 @@
+diff -Nurp corosync-1.4.7.orig/configure.ac corosync-1.4.7/configure.ac
+--- corosync-1.4.7.orig/configure.ac	2015-06-24 16:56:21.519999988 +0900
++++ corosync-1.4.7/configure.ac	2015-06-24 17:00:38.292999987 +0900
+@@ -558,7 +558,7 @@ if test "x${enable_user_flags}" = xyes; 
  fi
  
  # final build of *FLAGS
@@ -11,7 +10,7 @@ Make docs optional
  	$COVERAGE_CFLAGS $EXTRA_WARNINGS $WERROR_CFLAGS $NSS_CFLAGS"
  CPPFLAGS="$ENV_CPPFLAGS $ANSI_CPPFLAGS $OS_CPPFLAGS"
  LDFLAGS="$ENV_LDFLAGS $COVERAGE_LDFLAGS $OS_LDFLAGS"
-@@ -458,7 +458,10 @@
+@@ -585,7 +585,10 @@ AM_CONDITIONAL(BUILD_SOLARIS, test -n "$
  AC_SUBST([DARWIN_OPTS])
  AC_SUBST([SOLARIS_OPTS])
  
@@ -23,9 +22,10 @@ Make docs optional
  
  AC_SUBST([LINT_FLAGS])
  
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -41,9 +41,6 @@
+diff -Nurp corosync-1.4.7.orig/Makefile.am corosync-1.4.7/Makefile.am
+--- corosync-1.4.7.orig/Makefile.am	2014-06-02 21:55:54.000000000 +0900
++++ corosync-1.4.7/Makefile.am	2015-06-24 17:01:06.087999988 +0900
+@@ -46,9 +46,6 @@ MAINTAINERCLEANFILES	= Makefile.in acloc
  			  config.guess config.sub missing install-sh \
  			  autoheader automake autoconf
  
@@ -33,6 +33,5 @@ Make docs optional
 -			  README.recovery SECURITY TODO AUTHORS
 -
  corosysconfdir		= ${COROSYSCONFDIR}
-
- corosysconf_DATA        = conf/corosync.conf.example
-
+ 
+ corosysconf_DATA	= conf/corosync.conf.example \

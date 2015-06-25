@@ -1,0 +1,12 @@
+diff -Nurp corosync-1.3.1.org/man/Makefile.am corosync-1.3.1/man/Makefile.am
+--- corosync-1.3.1.org/man/Makefile.am	2011-04-25 10:37:50.000000000 +0800
++++ corosync-1.3.1/man/Makefile.am	2014-11-24 10:33:36.583426707 +0800
+@@ -126,7 +126,7 @@ HTML_DOCS = $(dist_man_MANS:%=%.html)
+ INDEX_HTML = index.html
+ 
+ %.html: %
+-	$(GROFF) -mandoc -Thtml $^ > $@
++	$(GROFF) -F $(DESCPATH) -mandoc -Thtml $^ > $@
+ 
+ install-data-local:
+ 	$(INSTALL) -d $(DESTDIR)/${docdir}/html

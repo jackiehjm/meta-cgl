@@ -1,0 +1,20 @@
+diff -Nurp corosync-1.4.7.orig/lib/coroipcc.c corosync-1.4.7/lib/coroipcc.c
+--- corosync-1.4.7.orig/lib/coroipcc.c	2014-06-02 21:55:54.000000000 +0900
++++ corosync-1.4.7/lib/coroipcc.c	2015-06-24 17:04:24.451999987 +0900
+@@ -68,6 +68,16 @@
+ #include <semaphore.h>
+ #else
+ #include <sys/sem.h>
++
++#if _SEM_SEMUN_UNDEFINED
++union semun {
++	int val;                           // value for SETVAL
++	struct semid_ds *buf;              // buffer for IPC_STAT & IPC_SET
++	unsigned short int *array;         // array for GETALL & SETALL
++	struct seminfo *__buf;             // buffer for IPC_INFO
++};
++#endif
++
+ #endif
+ 
+ #include "util.h"
