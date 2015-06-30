@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM="file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = " \
 	bzip2 \
 	cluster-glue \
-	cluster-resource-agents \
+	resource-agents \
 	glib-2.0 \
 	gnutls \
 	libxml2 \
