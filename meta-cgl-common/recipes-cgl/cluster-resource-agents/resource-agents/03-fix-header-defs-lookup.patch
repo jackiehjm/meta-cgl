@@ -1,9 +1,16 @@
-Index: Cluster-Resource-Agents-agents-1.0.2/configure.in
-===================================================================
---- Cluster-Resource-Agents-agents-1.0.2.orig/configure.in	2010-04-06 12:51:22.000000000 +0400
-+++ Cluster-Resource-Agents-agents-1.0.2/configure.in	2010-04-06 12:54:10.000000000 +0400
-@@ -91,9 +91,8 @@
- 	  Cfile=/tmp/extract_define.$2.${$}
+fix header defs lookup
+
+Signed-off-by: Bian Naimeng <biannm@cn.fujitsu.com>
+---
+ configure.ac | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3326b53..8b5706a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -140,9 +140,8 @@ extract_header_define() {
+ 	  Cfile=$srcdir/extract_define.$2.${$}
  	  printf "#include <stdio.h>\n" > ${Cfile}.c
  	  printf "#include <%s>\n" $1 >> ${Cfile}.c
 -	  printf "int main(int argc, char **argv) { printf(\"%%s\", %s); return 0; }\n" $2 >> ${Cfile}.c
@@ -14,3 +21,6 @@ Index: Cluster-Resource-Agents-agents-1.0.2/configure.in
  	  AC_MSG_RESULT($value)
  	  printf $value
  	  rm -f ${Cfile}.c ${Cfile}
+-- 
+1.8.3.1
+
