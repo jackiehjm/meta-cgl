@@ -55,7 +55,7 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     openhpi \
     pacemaker \
     cluster-glue \
-    cluster-resource-agents \
+    resource-agents \
     ifenslave \
     drbd \
     makedumpfile \
