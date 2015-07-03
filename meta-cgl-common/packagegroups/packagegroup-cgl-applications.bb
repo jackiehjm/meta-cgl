@@ -50,8 +50,7 @@ RDEPENDS_packagegroup-cgl-applications = " \
     pam-passwdqc \
     libpam \
     rsyslog \
-    openl2tp \
-    umip \
+    makedumpfile \
     "
 
 LTTNG ?= "\

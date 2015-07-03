@@ -58,7 +58,8 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     resource-agents \
     ifenslave \
     drbd \
-    makedumpfile \
+    openl2tp \
+    umip \
     "
 
 DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
