@@ -21,5 +21,6 @@ SRC_URI += "file://cfg/00001-systemtap.cfg \
             file://cfg/00022-coredump.cfg \
             file://cfg/00023-open-scsi.cfg \
             file://cfg/00024-ftrace.cfg \
+            file://cfg/00025-ipmi.cfg \
            "
 
