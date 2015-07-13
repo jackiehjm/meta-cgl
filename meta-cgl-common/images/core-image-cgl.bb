@@ -18,6 +18,7 @@ IMAGE_INSTALL += "\
     lttng-tools \
     lttng-modules \
     ${VALGRIND} \
+    kernel-modules \
     "
 
 # kexec-tools doesn't work on Mips

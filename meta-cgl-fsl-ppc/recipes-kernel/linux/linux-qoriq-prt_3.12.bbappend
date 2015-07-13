@@ -24,4 +24,6 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00023-open-scsi.cfg \
                         cfg/00024-ftrace.cfg \
                         cfg/00025-ipmi.cfg \
+                        cfg/00026-lm-sensors.cfg \
+                        cfg/00027-dmidecode.cfg \
                         "
