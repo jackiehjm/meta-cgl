@@ -24,4 +24,4 @@ IMAGE_INSTALL += "\
 KEXECTOOLS_mips ?= ""
 KEXECTOOLS_mipsel ?= ""
 
-IMAGE_FEATURES += "eclipse-debug tools-debug tools-profile dbg-pkgs"
+IMAGE_FEATURES += "tools-debug tools-profile"
