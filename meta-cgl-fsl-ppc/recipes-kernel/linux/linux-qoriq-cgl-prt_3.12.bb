@@ -1,6 +1,11 @@
 require recipes-kernel/linux/cgl-common.inc
+require recipes-kernel/linux/linux-qoriq.inc
 
-SRC_URI += ""
+SRC_URI = "git://git.freescale.com/ppc/sdk/linux.git;nobranch=1 \
+    file://powerpc-Fix-64-bit-builds-with-binutils-2.24.patch \
+    file://Fix-CVE-2014-5077-sctp-inherit-auth-capable-on-INIT-collisions.patch \
+"
+SRCREV = "c29fe1a733308cbe592b3af054a97be1b91cf2dd"
 
 DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00002-oprofile.cfg \
@@ -27,3 +32,4 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00026-lm-sensors.cfg \
                         cfg/00027-dmidecode.cfg \
                         "
+
