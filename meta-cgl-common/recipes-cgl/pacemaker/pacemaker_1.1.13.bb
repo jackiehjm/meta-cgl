@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6adca3b36477cc77e04376f9a40df32c \
                    "
 DEPENDS = "corosync libxslt openais libxml2 gnutls resource-agents libqb python-native"
 
-SRC_URI = "https://codeload.github.com/ClusterLabs/${BPN}/tar.gz/Pacemaker-1.1.12;downloadfilename=${BPN}-${PV}.tar.gz \
+SRC_URI = "git://github.com/ClusterLabs/pacemaker.git \
            file://0001-pacemaker-fix-xml-config.patch \
            file://0002-pacemaker-search-header-from-STAGING_INCDIR-to-walka.patch \
            file://0003-pacemaker-fix-header-defs-lookup.patch \
@@ -23,13 +23,11 @@ SRC_URI = "https://codeload.github.com/ClusterLabs/${BPN}/tar.gz/Pacemaker-1.1.1
            file://volatiles \
            file://tmpfiles \
           "
-
-SRC_URI[md5sum] = "c5c28013efb08441ab74a12034d9e9b4"
-SRC_URI[sha256sum] = "f5c72b609fac18d362880d120f08f990e8afd9388e6ff86c55cd93900ba54d9c"
+SRCREV = "6052cd16c2f455809f8088af76ce86483bf98353"
 
 inherit autotools-brokensep pkgconfig systemd python-dir useradd
 
-S="${WORKDIR}/pacemaker-Pacemaker-${PV}"
+S="${WORKDIR}/git"
 
 EXTRA_OECONF += "STAGING_INCDIR=${STAGING_INCDIR} \
                  --disable-fatal-warnings \
@@ -79,6 +77,7 @@ FILES_${PN} += " ${datadir}/snmp                             \
                  ${libdir}/corosync/lcrso/pacemaker.lcrso    \
                  ${libdir}/${PYTHON_DIR}/dist-packages/cts/  \
                  ${libdir}/ocf/resource.d/ \
+                 ${libdir}/${PYTHON_DIR}/site-packages \
                "
 FILES_${PN}-dbg += "${libdir}/corosync/lcrso/.debug"
 RDEPENDS_${PN} = "bash python libqb"

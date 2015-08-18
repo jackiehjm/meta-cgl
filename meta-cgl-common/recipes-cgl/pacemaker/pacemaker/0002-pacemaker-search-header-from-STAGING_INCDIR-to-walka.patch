@@ -1,8 +1,8 @@
-From 1fef2f6adaef3c56649adce4aca1b0ef2214c13b Mon Sep 17 00:00:00 2001
-From: Bian Naimeng <biannm@cn.fujitsu.com>
-Date: Fri, 3 Jul 2015 15:55:52 +0900
-Subject: [PATCH 2/2] pacemaker: search header from STAGING_INCDIR to
- walkaround error
+From 6bb056aa8359e33f9b6f8974e2cc8b518ca9fe96 Mon Sep 17 00:00:00 2001
+From: Li xin <lixin.fnst@cn.fujitsu.com>
+Date: Tue, 18 Aug 2015 12:34:32 +0900
+Subject: [PATCH] pacemaker: search header from STAGING_INCDIR to walkaround
+ error
 
  ** -I/usr/include/ is unsafe for cross-compilation
 
@@ -11,35 +11,28 @@ Subject: [PATCH 2/2] pacemaker: search header from STAGING_INCDIR to
  ** This autoconf log indicates errors, it looked at host include and/or library paths
  ** while determining system capabilities
 
+Upstream-Status: pending
+
 Signed-off-by: Bian Naimeng <biannm@cn.fujitsu.com>
+Signed-off-by: Li Xin <lixin.fnst@cn.fujitsu.com>
 ---
- configure.ac | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 25af918..4dee123 100644
+index 08b4611..6fcd1aa 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -451,7 +451,8 @@ case "$host_os" in
- 		;;
- *linux*)
- 		AC_DEFINE_UNQUOTED(ON_LINUX, 1, Compiling for Linux platform)
--  		CFLAGS="$CFLAGS -I${prefix}/include"
-+		CFLAGS="$CFLAGS -I${STAGING_INCDIR}"
-+		CPPFLAGS="$CPPFLAGS -I${STAGING_INCDIR}/heartbeat"
-  		;;
- darwin*)
- 		AC_DEFINE_UNQUOTED(ON_DARWIN, 1, Compiling for Darwin platform)
-@@ -461,7 +462,8 @@ darwin*)
- esac
+@@ -463,7 +463,8 @@ esac
  
  dnl Eventually remove this
--CFLAGS="$CFLAGS -I${prefix}/include/heartbeat"
-+CFLAGS="$CFLAGS -I${STAGING_INCDIR}/heartbeat"
-+CPPFLAGS="$CPPFLAGS -I${STAGING_INCDIR}/heartbeat"
+ if test "$cross_compiling" != "yes"; then
+-   CFLAGS="$CFLAGS -I${prefix}/include/heartbeat"
++   CFLAGS="$CFLAGS -I${STAGING_INCDIR}/heartbeat"
++   CPPFLAGS="$CPPFLAGS -I${STAGING_INCDIR}/heartbeat"
+ fi
  
  AC_SUBST(INIT_EXT)
- AC_MSG_NOTICE(Host CPU: $host_cpu)
 -- 
 1.8.4.2
 
