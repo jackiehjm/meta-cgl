@@ -1,0 +1,50 @@
+From b64b676f7abf896ca714341eb330099f2ff04213 Mon Sep 17 00:00:00 2001
+From: Li xin <lixin.fnst@cn.fujitsu.com>
+Date: Tue, 18 Aug 2015 17:43:29 +0900
+Subject: [PATCH] don't compile doc and Error Fix
+
+| help2man: can't get `--help' info from ../../lrm/admin/lrmadmin
+| make[2]: *** [lrmadmin.8] Error 1
+
+| make[2]: a2x: Command not found
+| /usr/bin/xsltproc \
+|       --xinclude \
+|       http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl ha_logd.xml
+| make[2]: *** [hb_report.8] Error 127
+
+Upstream-Status: pending
+
+Signed-off-by: Li Xin <lixin.fnst@cn.fujitsu.com>
+---
+ Makefile.am           | 2 +-
+ configure.ac          | 6 ++++++
+ lrm/admin/Makefile.am | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 93dbaf6..2f4d03b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,7 +23,7 @@ MAINTAINERCLEANFILES	= Makefile.in aclocal.m4 configure DRF/config-h.in \
+ 			  DRF/stamp-h.in libtool.m4 ltdl.m4 libltdl.tar
+ 
+ SUBDIRS			= include $(LIBLTDL_DIR) replace lib lrm logd \
+-			  hb_report doc config
++			  hb_report config
+ 
+ install-exec-local:
+ 	$(INSTALL) -d $(DESTDIR)/$(HA_COREDIR)
+diff --git a/lrm/admin/Makefile.am b/lrm/admin/Makefile.am
+index a92cd72..ed938e0 100644
+--- a/lrm/admin/Makefile.am
++++ b/lrm/admin/Makefile.am
+@@ -36,5 +36,5 @@ man8_MANS =	$(sbin_PROGRAMS:%=%.8)
+ %.8:	%
+ 	echo Creating $@
+ 	chmod a+x $<
+-	help2man --output $@ --no-info --section 8 --name "Part of the Linux-HA project" $(top_builddir)/lrm/admin/$<
++	help2man --output $@ --no-info --section 8 --name "Part of the Linux-HA project" /usr/sbin/$<
+ endif
+-- 
+1.8.4.2
+
