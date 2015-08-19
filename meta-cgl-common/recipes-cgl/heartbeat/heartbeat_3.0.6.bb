@@ -28,19 +28,19 @@ LIC_FILES_CHKSUM = " \
     file://doc/COPYING.LGPL;md5=d8045f3b8f929c1cb29a1e3fd737b499 \
 "
 SRC_URI = " \
-    http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/7e3a82377fa8.tar.bz2 \
+    http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/cceeb47a7d8f.tar.bz2 \
     file://membership-ccm-Makefile.am-fix-warning.patch \
     file://Makefile.am-not-chgrp-in-cross-compile.patch \
-    file://ucast.c-fix-compile-errors.patch \
     file://configure.in-Error-and-warning-fix.patch \
     file://heartbeat-init.d-heartbeat.in-modify-parameter.patch \
     file://heartbeat-bootstrap-libtool.patch \
     file://heartbeat.service \
 "
-SRC_URI[md5sum] = "396510e3c143a9c2288bc52cfc9caa3c"
-SRC_URI[sha256sum] = "085013154511f3c270b5e9a3281732dbbb9812924ae24d9c3c6db1af4dd260d0"
-S = "${WORKDIR}/Heartbeat-3-0-7e3a82377fa8/"
+SRC_URI[md5sum] = "3a98cf97842b8a557728be4fb94c8c5d"
+SRC_URI[sha256sum] = "a76ec86cd60428f89536c635a5109cf1e9c7f20283874041a4306960e69952f4"
+S = "${WORKDIR}/Heartbeat-3-0-cceeb47a7d8f/"
 DEPENDS = "cluster-glue corosync gnutls"
+RDEPENDS_${PN} += "python"
 inherit autotools-brokensep pkgconfig useradd
 EXTRA_OECONF = " \
     STAGING_DIR_TARGET=${STAGING_DIR_TARGET} \
@@ -119,4 +119,5 @@ FILES_${PN}-dbg += " \
 FILES_${PN} += " \
     run/heartbeat/ccm \
     run/heartbeat/dopd \
+    ${libdir}/tmpfiles.d \
 "
