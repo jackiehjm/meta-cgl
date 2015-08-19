@@ -20,9 +20,10 @@ SRC_URI = " \
     file://o2cb.service \
     file://ocfs2.service \
 "
-SRC_URI[md5sum] = "296f1242f4d00d188231d726d7a1d148"
-SRC_URI[sha256sum] = "a809f03c62e515a4c23e98c4b4c3f8150377af2cf44cd2a2ee56e175b0e4d0b3"
-S = "${WORKDIR}/ocfs2-tools-ocfs2-tools-1.4.3"
+SRC_URI[md5sum] = "4a17530629bfea5a7517d1db466e32e1"
+SRC_URI[sha256sum] = "a9956f296443360cf66a7bf8298bfd82c51a8e37e569674c0afb9cfa18f68af5"
+
+S = "${WORKDIR}/${PN}-${PN}-${PV}"
 inherit autotools-brokensep pkgconfig
 DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs"
 RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
