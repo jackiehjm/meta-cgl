@@ -24,28 +24,6 @@ index 2140bb3..00add7b 100644
  {
  	de->file_type = ocfs2_type_by_mode[(mode & S_IFMT)>>S_SHIFT];
  }
-diff --git a/mount.ocfs2/mount.ocfs2.c b/mount.ocfs2/mount.ocfs2.c
-index f820a30..3e5b362 100644
---- a/mount.ocfs2/mount.ocfs2.c
-+++ b/mount.ocfs2/mount.ocfs2.c
-@@ -261,7 +261,7 @@ int main(int argc, char **argv)
- 	char *extra = NULL;
- 	int dev_ro = 0;
- 	char *hbstr = NULL;
--	char stackstr[strlen(OCFS2_CLUSTER_STACK_ARG) + OCFS2_STACK_LABEL_LEN + 1] = "";
-+	char stackstr[strlen(OCFS2_CLUSTER_STACK_ARG) + OCFS2_STACK_LABEL_LEN + 1];
- 	ocfs2_filesys *fs = NULL;
- 	struct o2cb_cluster_desc cluster;
- 	struct o2cb_region_desc desc;
-@@ -269,6 +269,8 @@ int main(int argc, char **argv)
- 	int hb_started = 0;
- 	struct stat statbuf;
- 
-+	stackstr[0] = '\0';
-+
- 	initialize_ocfs_error_table();
- 	initialize_o2dl_error_table();
- 	initialize_o2cb_error_table();
 -- 
 1.8.4.2
 

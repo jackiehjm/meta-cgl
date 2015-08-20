@@ -11,19 +11,20 @@ HOMEPAGE = "http://oss.oracle.com/projects/ocfs2-tools/"
 SECTION = "System Environment/Base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
+
 SRC_URI = " \
-    https://github.com/flexiant/${PN}/archive/${BP}.zip \
-    file://0001-ocfs2_controld-Makefile-fix-compile-error.patch \
+    https://oss.oracle.com/projects/${BPN}/dist/files/source/v1.6/${BP}.tar.gz \
     file://0002-ocfs2_fs.h-mount.ocfs2.c-fix-compile-error.patch \
     file://0003-vendor-common-o2cb.ocf-add-new-conf-file.patch \
     file://cluster.conf.sample \
     file://o2cb.service \
     file://ocfs2.service \
 "
-SRC_URI[md5sum] = "296f1242f4d00d188231d726d7a1d148"
-SRC_URI[sha256sum] = "a809f03c62e515a4c23e98c4b4c3f8150377af2cf44cd2a2ee56e175b0e4d0b3"
-S = "${WORKDIR}/ocfs2-tools-ocfs2-tools-1.4.3"
-inherit autotools-brokensep pkgconfig
+SRC_URI[md5sum] = "2e94423507b63fcc08f93c094e789be8"
+SRC_URI[sha256sum] = "dda9db208312e3e5f4f55ee77e66e7b35b9cc10421bc02065a6c168e42b24755"
+
+inherit autotools-brokensep pkgconfig systemd
+
 DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs"
 RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
 ASNEEDED_pn-${PN} = ""
@@ -31,6 +32,7 @@ PARALLEL_MAKE = ""
 INSANE_SKIP_${PN} = "unsafe-references-in-binaries"
 CFLAGS_append += "-DGLIB_COMPILATION"
 CPPFLAGS_append += "-DGLIB_COMPILATION"
+
 EXTRA_OECONF = " \
     --enable-ocfs2console=no \
     --enable-dynamic-fsck=yes \
@@ -42,7 +44,6 @@ do_compile_prepend() {
     done
 }
 
-inherit systemd
 SYSTEMD_SERVICE_${PN} = "o2cb.service ocfs2.service"
 
 do_install() {
