@@ -6,7 +6,6 @@ SRC_URI += "git://git.freescale.com/ppc/sdk/linux.git;nobranch=1 \
     file://Fix-CVE-2014-5077-sctp-inherit-auth-capable-on-INIT-collisions.patch \
 "
 SRCREV = "c29fe1a733308cbe592b3af054a97be1b91cf2dd"
-
 DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00002-oprofile.cfg \
                         cfg/00003-lttng.cfg \
@@ -24,6 +23,7 @@ DELTA_KERNEL_DEFCONFIG += "cfg/00001-systemtap.cfg \
                         cfg/00016-dynamic-probe-insertion-kprobe.cfg \
                         cfg/00018-ipsec.cfg \
                         cfg/00019-raid-0.cfg \
+			cfg/00020-kexec.cfg \
                         cfg/00021-sctp.cfg \
                         cfg/00022-coredump.cfg \
                         cfg/00023-open-scsi.cfg \
