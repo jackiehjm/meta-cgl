@@ -37,7 +37,8 @@ This layer depends on:
 Source code
 ===========
 
-git://git.enea.com/linux/meta-cgl.git
+git://git.yoctoproject.org/meta-cgl
+http://git.yoctoproject.org/git/meta-cgl
 
 
 Maintenance
