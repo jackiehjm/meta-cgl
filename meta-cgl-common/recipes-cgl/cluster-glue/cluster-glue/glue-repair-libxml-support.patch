@@ -1,0 +1,14 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2014-07-14 13:02:42.016652860 +0200
++++ b/configure.ac	2014-07-14 13:03:59.585322332 +0200
+@@ -679,8 +679,8 @@
+ 
+ CPPFLAGS="$CPPFLAGS $XML2HEAD"
+ 
+-AC_CHECK_HEADERS(libxml/xpath.h)
+-if test "$ac_cv_header_libxml_xpath_h" != "yes"; then
++AC_CHECK_HEADERS(libxml2/libxml/xpath.h)
++if test x"$ac_cv_header_libxml2_libxml_xpath_h" != x"yes"; then
+    AC_MSG_ERROR(The libxml developement headers were not found)
+ fi
+ 
