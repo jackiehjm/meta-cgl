@@ -49,7 +49,6 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     vlan \
     corosync \
     iscsi-initiator-utils \
-    lksctp-tools \
     openais \
     openipmi \
     openhpi \
