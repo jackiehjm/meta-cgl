@@ -28,7 +28,7 @@ LIC_FILES_CHKSUM = " \
     file://doc/COPYING.LGPL;md5=d8045f3b8f929c1cb29a1e3fd737b499 \
 "
 SRC_URI = " \
-    http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/cceeb47a7d8f.tar.bz2 \
+    http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/958e11be8686.tar.bz2 \
     file://membership-ccm-Makefile.am-fix-warning.patch \
     file://Makefile.am-not-chgrp-in-cross-compile.patch \
     file://configure.in-Error-and-warning-fix.patch \
@@ -36,9 +36,9 @@ SRC_URI = " \
     file://heartbeat-bootstrap-libtool.patch \
     file://heartbeat.service \
 "
-SRC_URI[md5sum] = "3a98cf97842b8a557728be4fb94c8c5d"
-SRC_URI[sha256sum] = "a76ec86cd60428f89536c635a5109cf1e9c7f20283874041a4306960e69952f4"
-S = "${WORKDIR}/Heartbeat-3-0-cceeb47a7d8f/"
+SRC_URI[md5sum] = "101c8f507b1f407468d5ef15ae6719da"
+SRC_URI[sha256sum] = "851d2add2c129fef9fede764fec80229e1f6e7295e0e979950d10258648b462c"
+S = "${WORKDIR}/Heartbeat-3-0-958e11be8686/"
 DEPENDS = "cluster-glue corosync gnutls"
 RDEPENDS_${PN} += "python"
 inherit autotools-brokensep pkgconfig useradd
