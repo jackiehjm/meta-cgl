@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6adca3b36477cc77e04376f9a40df32c \
                    "
 DEPENDS = "corosync libxslt openais libxml2 gnutls resource-agents libqb python-native"
 
-SRC_URI = "git://github.com/ClusterLabs/pacemaker.git \
+SRC_URI = "https://github.com/ClusterLabs/${PN}/archive/Pacemaker-${PV}.zip \
            file://0001-pacemaker-fix-xml-config.patch \
            file://0002-pacemaker-search-header-from-STAGING_INCDIR-to-walka.patch \
            file://0003-pacemaker-fix-header-defs-lookup.patch \
@@ -23,11 +23,12 @@ SRC_URI = "git://github.com/ClusterLabs/pacemaker.git \
            file://volatiles \
            file://tmpfiles \
           "
-SRCREV = "6052cd16c2f455809f8088af76ce86483bf98353"
+SRC_URI[md5sum] = "d84a5173306727a981a4f87e36007595"
+SRC_URI[sha256sum] = "e963bc59a5d98a3e3441ea5cccb42aa67f9d7934b80c8818e19ae91c5da48331"
 
 inherit autotools-brokensep pkgconfig systemd python-dir useradd
 
-S="${WORKDIR}/git"
+S="${WORKDIR}/pacemaker-Pacemaker-${PV}"
 
 EXTRA_OECONF += "STAGING_INCDIR=${STAGING_INCDIR} \
                  --disable-fatal-warnings \
@@ -65,7 +66,7 @@ FILES_${PN}-libs = "${libdir}/libcib.so.* \
                     ${libdir}/libstonithd.so.* \
                     ${libdir}/libtransitioner.so.* \
                    "
-RDEPENDS_${PN}-libs += "libqb"
+RDEPENDS_${PN}-libs += "libqb dbus-lib"
 FILES_${PN}-cluster-libs = "${libdir}/libcrmcluster.so.*"
 RDEPENDS_${PN}-cluster-libs += "libqb"
 FILES_${PN}-remote = "${sysconfdir}/init.d/pacemaker_remote \
@@ -83,7 +84,7 @@ FILES_${PN}-dbg += "${libdir}/corosync/lcrso/.debug"
 RDEPENDS_${PN} = "bash python libqb"
 
 SYSTEMD_PACKAGES += "${PN}-remote"
-SYSTEMD_SERVICE_${PN} += "pacemaker.service"
+SYSTEMD_SERVICE_${PN} += "pacemaker.service crm_mon.service"
 SYSTEMD_SERVICE_${PN}-remote += "pacemaker_remote.service"
 
 USERADD_PACKAGES = "${PN}"
