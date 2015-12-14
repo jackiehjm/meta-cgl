@@ -83,6 +83,7 @@ FILES_${PN} = "${sysconfdir} /var ${libdir}/lib*.so.* ${sbindir} ${datadir}/clus
 	${libdir}/heartbeat/ipctransientclient \
 	${libdir}/heartbeat/ha_logd \
 	${libdir}/heartbeat/lrmd \
+	${systemd_unitdir} \
 	"
 
 FILES_${PN}-dbg += "${libdir}/heartbeat/.debug/ \
