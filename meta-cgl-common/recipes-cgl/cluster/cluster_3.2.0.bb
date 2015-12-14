@@ -33,6 +33,8 @@ do_configure () {
         --without_bindings \
         --without_group \
         --without_config \
+        --without_common \
+        --without_dlm \
         2>&1
 }
 
