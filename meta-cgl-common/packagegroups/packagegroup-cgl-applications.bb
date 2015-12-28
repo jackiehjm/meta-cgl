@@ -8,7 +8,7 @@ inherit packagegroup
 inherit pkgconfig
 
 
-PACKAGES = "packagegroup-cgl-applications"
+PACKAGES = "${PN}"
 
 LM_SENSORS = " \
     lmsensors-fancontrol \
@@ -24,7 +24,7 @@ LM_SENSORS = " \
     lmsensors-config-fancontrol \
     "
 
-RDEPENDS_packagegroup-cgl-applications = " \
+RDEPENDS_${PN} = " \
     lvm2 \
     ${LM_SENSORS} \
     bc \
@@ -69,4 +69,4 @@ RDEPENDS_${PN}_append_qemuppc = " ${LTTNGUST}"
 RDEPENDS_${PN}_append_qemuarm = " ${LTTNGUST}"
 RDEPENDS_${PN}_append_powerpc = " ${LTTNGUST}"
 
-RRECOMMENDS_packagegroup-cgl-applications = ""
+RRECOMMENDS_${PN} = ""
