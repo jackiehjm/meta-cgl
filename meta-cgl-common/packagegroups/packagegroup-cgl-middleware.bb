@@ -57,7 +57,7 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     cluster-glue \
     resource-agents \
     ifenslave \
-    drbd \
+    drbd-utils \
     openl2tp \
     umip \
     dmidecode \
