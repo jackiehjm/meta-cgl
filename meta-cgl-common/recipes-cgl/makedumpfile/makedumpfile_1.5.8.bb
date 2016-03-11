@@ -12,7 +12,7 @@ SRC_URI[makedumpfile.sha256sum] = "dd9c6c40c1ae6774b61bbe7b53f5ebbee9734f576d8ec
 
 DEPENDS = "zlib elfutils bzip2"
 
-EXTRA_OEMAKE = "TARGET=${TARGET_ARCH}"
+EXTRA_OEMAKE = "TARGET=${TARGET_ARCH} LINKTYPE=dynamic"
 
 do_install() {
 	install -d ${D}${bindir}/
