@@ -236,7 +236,7 @@ else
                     echo "*** Error: There is no meta-layer called: $layer"
                 else
                     egrep "$layer " conf/bblayers.conf >/dev/null ||
-                    sed -i -e '/.*meta-yocto .*/i\'"  $layer \\\\" conf/bblayers.conf
+                    sed -i -e '/.*meta-poky .*/i\'"  $layer \\\\" conf/bblayers.conf
                     echo "*** Info: Adding $layer to bblayers.conf"
                 fi
             done
