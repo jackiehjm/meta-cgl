@@ -12,20 +12,18 @@ SECTION = "System Environment/Base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
-SRC_URI = " \
-    https://oss.oracle.com/projects/${BPN}/dist/files/source/v1.6/${BP}.tar.gz \
-    file://0002-ocfs2_fs.h-mount.ocfs2.c-fix-compile-error.patch \
+SRC_URI = "git://oss.oracle.com/git/ocfs2-tools.git \
     file://0003-vendor-common-o2cb.ocf-add-new-conf-file.patch \
     file://cluster.conf.sample \
     file://o2cb.service \
     file://ocfs2.service \
 "
-SRC_URI[md5sum] = "2e94423507b63fcc08f93c094e789be8"
-SRC_URI[sha256sum] = "dda9db208312e3e5f4f55ee77e66e7b35b9cc10421bc02065a6c168e42b24755"
+SRCREV = "0b8be47d61dbdcd08d21c83f0b3993735b884ef9"
+S = "${WORKDIR}/git"
 
 inherit autotools-brokensep pkgconfig systemd
 
-DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs"
+DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs libaio"
 RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
 ASNEEDED_pn-${PN} = ""
 PARALLEL_MAKE = ""
@@ -38,6 +36,22 @@ EXTRA_OECONF = " \
     --enable-dynamic-fsck=yes \
     --enable-dynamic-ctl=yes \
 "
+
+do_configure_prepend () {
+        # fix here or EXTRA_OECONF
+        sed -i -e '/^PYTHON_INCLUDES="-I/c\
+PYTHON_INCLUDES="-I=/usr/include/python${PYTHON_BASEVERSION}"' \
+                ${S}/pythondev.m4
+        sed -i  -e 's:PYTHON_PREFIX/lib/python:PYTHON_PREFIX/${baselib}/python:' \
+            -e 's:PYTHON_EXEC_PREFIX}/lib/python:PYTHON_EXEC_PREFIX}/${baselib}/python:' \
+                ${S}/python.m4
+
+        # fix the AIS_TRY_PATH which will search corosync|openais
+        # AIS_TRY_PATH=":/usr/lib64/:/usr/lib:/usr/local/lib64:/usr/local/lib"
+        sed -i -e '/^AIS_TRY_PATH=":\/usr\/lib64:/s;:;:=;g' ${S}/configure.in
+}
+
+
 do_compile_prepend() {
     for m in `find . -name "Makefile"` ; do
         sed -i -e "s@-I/usr/include@-I${STAGING_DIR_TARGET}/usr/include@g" $m
@@ -73,3 +87,5 @@ do_install() {
         install -m 755 vendor/common/o2cb.init ${D}/${libexecdir}/o2cb-helper
     fi
 }
+
+RDEPENDS_${PN} = "bash"
