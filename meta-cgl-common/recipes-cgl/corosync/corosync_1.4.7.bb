@@ -4,7 +4,7 @@ several default APIs and libraries, default configuration files, and an init \
 script."
 HOMEPAGE = "http://corosync.github.io/corosync/"
 
-inherit autotools pkgconfig update-rc.d useradd
+inherit autotools pkgconfig update-rc.d useradd cgl-calc
 
 SRC_URI = "http://build.clusterlabs.org/corosync/releases/${BPN}-${PV}.tar.gz \
            file://groff-desc-path.patch \
@@ -57,4 +57,9 @@ INITSCRIPT_NAME = "corosync"
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "haclient"
 USERADD_PARAM_${PN} = "-M --home  ${localstatedir}/lib/heartbeat -g haclient hacluster"
+
+CGL_ID="CFH.2.0,CCM.2.2"
+PRIORITY="P1,P1"
+DISCLOSURE="${PN},${PN}"
+
 

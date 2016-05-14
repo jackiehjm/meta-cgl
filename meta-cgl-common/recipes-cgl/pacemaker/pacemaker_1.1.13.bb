@@ -26,7 +26,7 @@ SRC_URI = "https://github.com/ClusterLabs/${PN}/archive/Pacemaker-${PV}.zip \
 SRC_URI[md5sum] = "d84a5173306727a981a4f87e36007595"
 SRC_URI[sha256sum] = "e963bc59a5d98a3e3441ea5cccb42aa67f9d7934b80c8818e19ae91c5da48331"
 
-inherit autotools-brokensep pkgconfig systemd python-dir useradd
+inherit autotools-brokensep pkgconfig systemd python-dir useradd cgl-calc
 
 S="${WORKDIR}/pacemaker-Pacemaker-${PV}"
 
@@ -90,3 +90,8 @@ SYSTEMD_SERVICE_${PN}-remote += "pacemaker_remote.service"
 USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = "-r -g haclient -s ${base_sbindir}/nologin hacluster"
 GROUPADD_PARAM_${PN} = "-r haclient"
+
+CGL_ID="AVL.25.0,CAF.2.1,CAF.2.2"
+PRIORITY="P1,P1,P1"
+DISCLOSURE="${PN},${PN},${PN}"
+
