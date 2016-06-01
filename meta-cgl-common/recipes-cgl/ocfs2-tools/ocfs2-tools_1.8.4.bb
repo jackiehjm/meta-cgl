@@ -79,7 +79,7 @@ do_install() {
     rm -rf ${D}/sbin/ocfs2_controld.cman
     # fix up hardcoded paths
     sed -i -e 's,/usr/lib/,${libdir}/,' ${WORKDIR}/o2cb.service
-    if ${@base_contains('DISTRO_FEATURES','systemd','true','false',d)}; then
+    if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
         install -d ${D}/${systemd_unitdir}/system
         install -m 644 ${WORKDIR}/o2cb.service ${D}/${systemd_unitdir}/system
         install -m 644 ${WORKDIR}/ocfs2.service ${D}/${systemd_unitdir}/system
