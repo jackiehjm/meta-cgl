@@ -17,8 +17,8 @@ BBCLASSEXTEND = "native"
 PR = "r1"
 
 SRC_URI = "http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/MailTools-${PV}.tar.gz"
-SRC_URI[md5sum] = "5d6fbdc56c6e1208e684012437b67e30"
-SRC_URI[sha256sum] = "7216404681bebce4e09651e1619c3e1eebe2a7e3856f1233af0dd9660ba052b6"
+SRC_URI[md5sum] = "972468ab5207b90398d77bed4ffc361d"
+SRC_URI[sha256sum] = "dfee9e770257371112f20d978e637759e81bc4f19e97b083585c71ecab37b527"
 
 S = "${WORKDIR}/MailTools-${PV}"
 
