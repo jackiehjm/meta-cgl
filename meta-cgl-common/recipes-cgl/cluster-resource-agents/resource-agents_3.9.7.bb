@@ -20,8 +20,8 @@ SRC_URI = "https://codeload.github.com/ClusterLabs/resource-agents/tar.gz/v${PV}
            file://03-fix-header-defs-lookup.patch \
           "
 
-SRC_URI[md5sum] = "6873d5a217aee3026193fb85bfa18a4a"
-SRC_URI[sha256sum] = "39722cdee68ff96d06788f05f325bd21ec2fc59c59d847e5e4b23c6df23bf678"
+SRC_URI[md5sum] = "c59096b1bacc704e8a5a285f15729109"
+SRC_URI[sha256sum] = "e5bd62658fbc236acb83b709f64b2cd9fae52aa4a420a44fed5eb667e928b152"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
                     file://COPYING.LGPL;md5=4fbd65380cdd255951079008b364516c \
