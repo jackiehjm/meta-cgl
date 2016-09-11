@@ -27,7 +27,7 @@ index 08b4611..6fcd1aa 100644
  
  dnl Eventually remove this
  if test "$cross_compiling" != "yes"; then
--   CFLAGS="$CFLAGS -I${prefix}/include/heartbeat"
+-   CPPFLAGS="$CPPFLAGS -I${prefix}/include/heartbeat"
 +   CFLAGS="$CFLAGS -I${STAGING_INCDIR}/heartbeat"
 +   CPPFLAGS="$CPPFLAGS -I${STAGING_INCDIR}/heartbeat"
  fi
