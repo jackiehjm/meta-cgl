@@ -18,14 +18,8 @@ DHCP = " \
     "
 
 MULTIPATH_TOOLS = " \
-    libmpathpersist \
-    mpathpersist \
+    multipath-tools \
     kpartx \
-    libmultipath \
-    multipath \
-    multipathd \
-    libmultipath-dev \
-    libmpathpersist-dev \
     "
 
 RDEPENDS_packagegroup-cgl-middleware = "\
