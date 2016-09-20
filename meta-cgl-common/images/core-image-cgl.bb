@@ -21,6 +21,8 @@ IMAGE_INSTALL += "\
     kernel-modules \
     "
 
+IMAGE_FSTYPES += " ext3.gz"
+
 # kexec-tools doesn't work on Mips
 KEXECTOOLS_mips ?= ""
 KEXECTOOLS_mipsel ?= ""
