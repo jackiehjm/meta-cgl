@@ -18,7 +18,6 @@ IMAGE_INSTALL += "\
     lttng-tools \
     lttng-modules \
     ${VALGRIND} \
-    kernel-modules \
     "
 
 IMAGE_FSTYPES += " ext3.gz"
