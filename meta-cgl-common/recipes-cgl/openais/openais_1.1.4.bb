@@ -5,7 +5,7 @@ DEPENDS = "cluster-glue corosync"
 
 
 SRC_URI = " \
-    ftp://ftp@tux.rainside.sk/gentoo/distfiles/openais-${PV}.tar.gz \
+    http://tux.rainside.sk/gentoo/distfiles/openais-${PV}.tar.gz \
     file://fix-lcrso-linkage.patch \
     file://build-cleanup-configure-ac.patch \
     file://openais-fix-bash.patch \
