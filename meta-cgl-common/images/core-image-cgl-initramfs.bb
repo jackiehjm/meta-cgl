@@ -12,8 +12,8 @@ export IMAGE_BASENAME = "core-image-cgl-initramfs"
 IMAGE_LINGUAS = ""
 
 LICENSE = "MIT"
-
-IMAGE_FSTYPES = "cpio.gz.u-boot"
+IMAGE_CLASSES = " image_types_uboot"
+IMAGE_FSTYPES ??= "cpio.gz.u-boot"
 
 IMAGE_ROOTFS_SIZE = "8192"
 
