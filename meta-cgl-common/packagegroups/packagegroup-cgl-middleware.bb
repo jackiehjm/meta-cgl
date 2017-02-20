@@ -42,7 +42,7 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     strongswan \
     vlan \
     corosync \
-    iscsi-initiator-utils \
+ ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "iscsi-initiator-utils", "",d)} \
     openais \
     openipmi \
     openhpi \
