@@ -21,9 +21,6 @@ This layer depends on:
   URI: git://git.yoctoproject.org/meta-qt3
   branch: master
 
-  URI: https://github.com/joaohf/meta-openclovis
-  branch: master
-
   URI: git://git.yoctoproject.org/meta-selinux
   branch: master
 
@@ -98,7 +95,6 @@ other layers needed. Adapt the below list to proper format.
     meta-yocto
     meta-yocto-bsp
     meta-virtualization
-    meta-openclovis
     meta-selinux
     meta-security
     meta-cloud-services/meta-openstack

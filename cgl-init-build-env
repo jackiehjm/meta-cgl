@@ -28,7 +28,7 @@ unset OPTION
 
 NUM_CORES=$(grep -c processor /proc/cpuinfo || echo 2)
 BUILD_PATH="build"
-METALAYERS="meta-cgl/meta-cgl-common,meta-qt3,meta-openclovis,meta-selinux,meta-security,meta-virtualization"
+METALAYERS="meta-cgl/meta-cgl-common,meta-qt3,meta-selinux,meta-security,meta-virtualization"
 
 function usage() {
 cat <<EOF
