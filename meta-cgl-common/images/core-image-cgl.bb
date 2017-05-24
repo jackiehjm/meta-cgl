@@ -10,7 +10,6 @@ VALGRIND_armv7a ?= "valgrind"
 
 # Include modules in rootfs
 IMAGE_INSTALL += "\
-    ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
     packagegroup-core-buildessential \
     packagegroup-core-selinux \
     packagegroup-cgl \

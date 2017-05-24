@@ -3,7 +3,7 @@ require core-image-cgl.bb
 # Recipe is based on core-image-minimal.bb
 DESCRIPTION = "Initramfs used to mount multipath device as root file system"
 
-PACKAGE_INSTALL = "initramfs-cgl-boot busybox base-passwd udev ${ROOTFS_BOOTSTRAP_INSTALL}"
+PACKAGE_INSTALL = "initramfs-cgl-boot busybox base-passwd udev"
 
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
