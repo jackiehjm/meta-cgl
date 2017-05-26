@@ -12,6 +12,7 @@ SRC_URI = " \
     file://openais-fix-init-script.patch \
     file://openais-saTmrTimerReschedule-test-error.patch \
     file://openais-fix-corosync-not-quit.patch \
+    file://openais-fix-resource-cleanup-entry.patch \
     file://openais.service \
     "
 
