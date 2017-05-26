@@ -9,6 +9,7 @@ SRC_URI = " \
     file://fix-lcrso-linkage.patch \
     file://build-cleanup-configure-ac.patch \
     file://openais-fix-bash.patch \
+    file://openais-fix-init-script.patch \
     file://openais.service \
     "
 
