@@ -10,6 +10,7 @@ SRC_URI = " \
     file://build-cleanup-configure-ac.patch \
     file://openais-fix-bash.patch \
     file://openais-fix-init-script.patch \
+    file://openais-saTmrTimerReschedule-test-error.patch \
     file://openais.service \
     "
 
