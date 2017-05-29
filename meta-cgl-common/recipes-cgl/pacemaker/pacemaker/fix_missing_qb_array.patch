@@ -1,0 +1,21 @@
+fix missing header file
+
+ mainloop.c:406:8: error: unknown type name 'qb_array_t'
+|  static qb_array_t *gio_map = NULL;
+
+Upstream-status: Pending
+
+Signed-off-by: Armin Kuster <akuster@mvista.com>
+
+Index: pacemaker-Pacemaker-1.1.15/lib/common/mainloop.c
+===================================================================
+--- pacemaker-Pacemaker-1.1.15.orig/lib/common/mainloop.c
++++ pacemaker-Pacemaker-1.1.15/lib/common/mainloop.c
+@@ -32,6 +32,7 @@
+ #include <crm/common/xml.h>
+ #include <crm/common/mainloop.h>
+ #include <crm/common/ipcs.h>
++#include <qb/qbarray.h>
+ 
+ struct mainloop_child_s {
+     pid_t pid;

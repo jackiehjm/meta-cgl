@@ -20,6 +20,7 @@ SRC_URI = "https://github.com/ClusterLabs/${PN}/archive/Pacemaker-${PV}.zip \
            file://0003-pacemaker-fix-header-defs-lookup.patch \
            file://0004-pacemaker-do-not-build-help.patch \
            file://0005-pacemaker-do-not-execute-target-program-while-cross-.patch \
+           file://fix_missing_qb_array.patch \
            file://volatiles \
            file://tmpfiles \
           "
