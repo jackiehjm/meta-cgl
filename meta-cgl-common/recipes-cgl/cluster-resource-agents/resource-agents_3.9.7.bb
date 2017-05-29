@@ -30,7 +30,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
 DEPENDS = "cluster-glue"
 RDEPENDS_${PN} += "bash"
 
-inherit autotools systemd
+inherit autotools systemd pkgconfig
 
 EXTRA_OECONF += "--disable-fatal-warnings \
                  --with-rsctmpdir=/var/run/heartbeat/rsctmp"
