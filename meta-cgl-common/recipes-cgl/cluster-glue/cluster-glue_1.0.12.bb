@@ -27,18 +27,26 @@ inherit autotools useradd pkgconfig systemd
 SYSTEMD_SERVICE_${PN} = "logd.service"
 SYSTEMD_AUTO_ENABLE = "disable"
 
+HA_USER = "hacluster"
+HA_GROUP = "haclient"
+
 S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
 
 PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
 PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_system_unitdir},--without-systemdsystemunitdir,systemd"
 
-EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient --disable-fatal-warnings"
+EXTRA_OECONF = "--with-daemon-user=${HA_USER} \
+                --with-daemon-group=${HA_GROUP} \
+                --disable-fatal-warnings \
+               "
 
 CACHED_CONFIGUREVARS="ac_cv_path_XML2CONFIG=0"
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--home-dir=${localstatedir}/lib/heartbeat -g haclient -r hacluster"
-GROUPADD_PARAM_${PN} = "-r haclient"
+USERADD_PARAM_${PN} = "--home-dir=${localstatedir}/lib/heartbeat/cores/${HA_USER} \
+                       -g ${HA_GROUP} -r -s ${sbindir}/nologin -c 'cluster user' ${HA_USER} \
+                      "
+GROUPADD_PARAM_${PN} = "-r ${HA_GROUP}"
 
 do_configure_prepend() {
     ln -sf ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml2/libxml ${PKG_CONFIG_SYSROOT_DIR}/usr/include/libxml
