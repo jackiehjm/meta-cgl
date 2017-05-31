@@ -20,9 +20,15 @@ SRC_URI[sha256sum] = "feba102fa1e24b6be2005089ebe362b82d6567af60005cf371679b1b44
 
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 
-inherit autotools useradd pkgconfig
+inherit autotools useradd pkgconfig systemd
+
+SYSTEMD_SERVICE_${PN} = "logd.service"
+SYSTEMD_AUTO_ENABLE = "disable"
 
 S = "${WORKDIR}/Reusable-Cluster-Components-glue--glue-${PV}"
+
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_system_unitdir},--without-systemdsystemunitdir,systemd"
 
 EXTRA_OECONF = "--with-daemon-user=hacluster --with-daemon-group=haclient --disable-fatal-warnings"
 
