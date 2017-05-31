@@ -3,7 +3,11 @@ the Heartbeat/Pacemaker cluster stack. In essence, Glue is everything that \
 is not the cluster messaging layer (Heartbeat), nor the cluster resource manager \
 (Pacemaker), nor a Resource Agent."
 
-LICENSE = "GPLv2"
+LICENSE = "GPLv2 & LGPLv2.1"
+LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
+                    file://COPYING.LIB;md5=243b725d71bb5df4a1e5920b344b86ad \
+"
+
 DEPENDS = "libxml2 libtool glib-2.0 bzip2 util-linux net-snmp openhpi"
 
 SRC_URI = " \
@@ -17,8 +21,6 @@ SRC_URI_append_libc-uclibc = " file://kill-stack-protector.patch"
 
 SRC_URI[md5sum] = "ec620466d6f23affa3b074b72bca7870"
 SRC_URI[sha256sum] = "feba102fa1e24b6be2005089ebe362b82d6567af60005cf371679b1b44ec503f"
-
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 
 inherit autotools useradd pkgconfig systemd
 
