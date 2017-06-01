@@ -28,9 +28,19 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
                     file://COPYING.GPLv3;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS = "cluster-glue"
-RDEPENDS_${PN} += "bash"
 
-inherit autotools systemd
+# There are many tools and scripts that need bash and perl.
+# lvm.sh requires: lvm2
+# ip.sh requires: ethtool iproute2 iputils-arping
+# fs.sh requires: e2fsprogs-e2fsck util-linux quota
+# netfs.sh requires: procps util-linux nfs-utils
+RDEPENDS_${PN} += "bash perl lvm2 \
+    ethtool iproute2 iputils-arping \
+    e2fsprogs-e2fsck util-linux quota \
+    procps nfs-utils \
+"
+
+inherit autotools systemd pkgconfig
 
 EXTRA_OECONF += "--disable-fatal-warnings \
                  --with-rsctmpdir=/var/run/heartbeat/rsctmp"
