@@ -8,28 +8,32 @@ when related resources fail and can be configured to periodically \
 check resource health."
 HOMEPAGE = "http://www.clusterlabs.org"
 
-LICENSE = "GPLv2+ & LGPLv2+"
-LIC_FILES_CHKSUM = "file://COPYING;md5=6adca3b36477cc77e04376f9a40df32c \
-                    file://COPYING.LIB;md5=243b725d71bb5df4a1e5920b344b86ad \
-                   "
+LICENSE = "GPLv2+ & LGPLv2.1+"
+LIC_FILES_CHKSUM = "file://COPYING;md5=19a64afd3a35d044a80579d7aafc30ff"
+
 DEPENDS = "corosync libxslt openais libxml2 gnutls resource-agents libqb python-native"
 
-SRC_URI = "https://github.com/ClusterLabs/${PN}/archive/Pacemaker-${PV}.zip \
+SRC_URI = "https://github.com/ClusterLabs/${BPN}/archive/Pacemaker-${PV}.zip \
            file://0001-pacemaker-fix-xml-config.patch \
            file://0002-pacemaker-search-header-from-STAGING_INCDIR-to-walka.patch \
            file://0003-pacemaker-fix-header-defs-lookup.patch \
            file://0004-pacemaker-do-not-build-help.patch \
            file://0005-pacemaker-do-not-execute-target-program-while-cross-.patch \
+           file://0006-pacemaker-do-not-use-libgnutls-config.patch \
            file://fix_missing_qb_array.patch \
            file://volatiles \
            file://tmpfiles \
           "
-SRC_URI[md5sum] = "def7902672872a6f43581b694eb34a4b"
-SRC_URI[sha256sum] = "0191037508b73a364c157892258bab72184384ebb854ff5233e84941fe014f5e"
+SRC_URI[md5sum] = "6f60f733823d31acbef4556fb749c457"
+SRC_URI[sha256sum] = "2642264b27c584eff5747a2a34c7f2bff13d52741e4e5cc70f14b2b6cd1fe7d5"
 
 inherit autotools-brokensep pkgconfig systemd python-dir useradd
 
 S="${WORKDIR}/pacemaker-Pacemaker-${PV}"
+
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
+PACKAGECONFIG[systemd] = "--enable-systemd,--disable-systemd,systemd"
+PACKAGECONFIG[libesmtp] = "--with-esmtp=yes,--with-esmtp=no,libesmtp"
 
 EXTRA_OECONF += "STAGING_INCDIR=${STAGING_INCDIR} \
                  --disable-fatal-warnings \
@@ -41,9 +45,9 @@ EXTRA_OECONF += "STAGING_INCDIR=${STAGING_INCDIR} \
 do_install_append() {
     install -d ${D}${sysconfdir}/default
     install -d ${D}${sysconfdir}/default/volatiles
-    install -m 0644 ${WORKDIR}/volatiles ${D}${sysconfdir}/default/volatiles/06_${PN}
+    install -m 0644 ${WORKDIR}/volatiles ${D}${sysconfdir}/default/volatiles/06_${BPN}
     install -d ${D}${sysconfdir}/tmpfiles.d
-    install -m 0644 ${WORKDIR}/tmpfiles ${D}${sysconfdir}/tmpfiles.d/${PN}.conf
+    install -m 0644 ${WORKDIR}/tmpfiles ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
 
     # Don't package some files
     find ${D} -name "*.pyo" -exec rm {} \;

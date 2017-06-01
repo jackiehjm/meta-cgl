@@ -1,0 +1,29 @@
+commit bb26b7c290473af988aa9d4132ef55ca907091e6
+Author: Joe Slater <jslater@windriver.com>
+Date:   Mon Mar 11 15:47:54 2013 -0700
+
+    pacemaker: do not use libgnutls-config
+
+    Do not try to use libgnutls-config when configuring.
+    It has been deprecated and we do not supply it.  If a
+    host version is found, bad things can happen.
+
+Signed-off-by: Joe Slater <jslater@windriver.com>
+Signed-off-by: Jackie Huang <jackie.huang@windriver.com>
+
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1427,9 +1427,9 @@ dnl ====================================
+ AC_CHECK_HEADERS(gnutls/gnutls.h)
+ AC_CHECK_HEADERS(security/pam_appl.h pam/pam_appl.h)
+ 
+-dnl GNUTLS library: Attempt to determine by 'libgnutls-config' program.
+-dnl If no 'libgnutls-config', try traditional autoconf means.
+-AC_PATH_PROGS(LIBGNUTLS_CONFIG, libgnutls-config)
++dnl libgnutls-config has been deprecated, so we use pkg-config
++
++LIBGNUTLS_CONFIG="pkg-config gnutls"
+ 
+ if test -n "$LIBGNUTLS_CONFIG"; then
+ 	AC_MSG_CHECKING(for gnutls header flags)
