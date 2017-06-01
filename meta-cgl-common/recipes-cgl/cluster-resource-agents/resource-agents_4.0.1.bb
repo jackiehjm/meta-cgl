@@ -22,8 +22,8 @@ SRC_URI = "https://codeload.github.com/ClusterLabs/resource-agents/tar.gz/v${PV}
            file://fs.sh-fix-builds-when-srcdir-and-builddir-are-sepera.patch \
           "
 
-SRC_URI[md5sum] = "c59096b1bacc704e8a5a285f15729109"
-SRC_URI[sha256sum] = "e5bd62658fbc236acb83b709f64b2cd9fae52aa4a420a44fed5eb667e928b152"
+SRC_URI[md5sum] = "8530431861e659d4ce2f04afcc4efc03"
+SRC_URI[sha256sum] = "863f83c724bad3a8bcff12b9c8712406c43e010041868826cad7b78fd8cfb9fb"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
                     file://COPYING.LGPL;md5=4fbd65380cdd255951079008b364516c \
