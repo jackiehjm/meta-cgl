@@ -18,6 +18,7 @@ SRC_URI = "https://codeload.github.com/ClusterLabs/resource-agents/tar.gz/v${PV}
            file://01-disable-doc-build.patch \
            file://02-set-OCF_ROOT_DIR-to-libdir-ocf.patch \
            file://03-fix-header-defs-lookup.patch \
+           file://fix-install-sh-not-found.patch \
           "
 
 SRC_URI[md5sum] = "c59096b1bacc704e8a5a285f15729109"
