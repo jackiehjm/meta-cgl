@@ -24,8 +24,8 @@ SRC_URI = "https://github.com/ClusterLabs/${PN}/archive/Pacemaker-${PV}.zip \
            file://volatiles \
            file://tmpfiles \
           "
-SRC_URI[md5sum] = "3721971f8adba248076b43f97c4571ab"
-SRC_URI[sha256sum] = "0787cbc18d1f1b360a11eb7ccb6714042360d4948b2517a9fe43daf9e839af66"
+SRC_URI[md5sum] = "def7902672872a6f43581b694eb34a4b"
+SRC_URI[sha256sum] = "0191037508b73a364c157892258bab72184384ebb854ff5233e84941fe014f5e"
 
 inherit autotools-brokensep pkgconfig systemd python-dir useradd
 
