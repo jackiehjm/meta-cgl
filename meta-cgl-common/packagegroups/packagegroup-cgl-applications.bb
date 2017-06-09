@@ -40,7 +40,6 @@ RDEPENDS_${PN} = " \
     quota \
     smartmontools \
     monit \
-    syslog-ng \
     ocfs2-tools \
     logcheck \
     samhain-client \
@@ -49,7 +48,6 @@ RDEPENDS_${PN} = " \
     crash \
     pam-passwdqc \
     libpam \
-    rsyslog \
     makedumpfile \
     "
 
