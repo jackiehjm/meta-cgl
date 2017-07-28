@@ -14,7 +14,6 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
 SRC_URI = "git://oss.oracle.com/git/ocfs2-tools.git \
     file://0003-vendor-common-o2cb.ocf-add-new-conf-file.patch \
-    file://cluster.conf.sample \
     file://o2cb.service \
     file://ocfs2.service \
 "
@@ -62,32 +61,41 @@ do_compile_prepend() {
 }
 
 SYSTEMD_SERVICE_${PN} = "o2cb.service ocfs2.service"
+SYSTEMD_AUTO_ENABLE = "disable"
 
-do_install() {
-    install -d ${D}/etc/init.d
-    install vendor/common/o2cb.init ${D}/etc/init.d/o2cb
-    install vendor/common/ocfs2.init ${D}/etc/init.d/ocfs2
-    install -d ${D}/etc/sysconfig
-    install vendor/common/o2cb.sysconfig ${D}/etc/sysconfig/o2cb
-    install -d ${D}/etc/udev/rules.d
-    install vendor/common/51-ocfs2.rules ${D}/etc/udev/rules.d/51-ocfs2.rules
+do_install_append() {
+    install -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${S}/vendor/common/o2cb.init ${D}${sysconfdir}/init.d/o2cb
+    install -m 0755 ${S}/vendor/common/ocfs2.init ${D}${sysconfdir}/init.d/ocfs2
+
+    install -d ${D}${sysconfdir}/sysconfig
+    install -m 0644 ${S}/vendor/common/o2cb.sysconfig ${D}${sysconfdir}/sysconfig/o2cb
+
+    install -d ${D}${sysconfdir}/udev/rules.d
+    install -m 0644 ${S}/vendor/common/51-ocfs2.rules ${D}${sysconfdir}/udev/rules.d/51-ocfs2.rules
+
     install -d ${D}/${libdir}/ocf/resource.d/ocfs2
-    install  -m 0755 vendor/common/o2cb.ocf ${D}/${libdir}/ocf/resource.d/ocfs2/o2cb
-    oe_runmake DESTDIR="${D}" install
+    install  -m 0755 ${S}/vendor/common/o2cb.ocf ${D}/${libdir}/ocf/resource.d/ocfs2/o2cb
     chmod 644 ${D}/${libdir}/*.a
-    install -dm 0755  ${D}/etc/ocfs2
-    install -m 0644 ${WORKDIR}/cluster.conf.sample ${D}/etc/ocfs2/cluster.conf.sample
+
+    install -dm 0755  ${D}${sysconfdir}/ocfs2
+    install -m 0644 ${S}/documentation/samples/cluster.conf ${D}${sysconfdir}/ocfs2/cluster.conf.sample
+
     rm -rf ${D}/${libdir}/ocf
     rm -rf ${D}/sbin/ocfs2_controld.pcmk
     rm -rf ${D}/sbin/ocfs2_controld.cman
-    # fix up hardcoded paths
-    sed -i -e 's,/usr/lib/,${libdir}/,' ${WORKDIR}/o2cb.service
+
     if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-        install -d ${D}/${systemd_unitdir}/system
-        install -m 644 ${WORKDIR}/o2cb.service ${D}/${systemd_unitdir}/system
-        install -m 644 ${WORKDIR}/ocfs2.service ${D}/${systemd_unitdir}/system
+        install -d ${D}/${systemd_system_unitdir}
+        install -m 0644 ${WORKDIR}/o2cb.service ${D}/${systemd_system_unitdir}
+        sed -i -e 's,@LIBDIR@,${libexecdir},' ${D}${systemd_system_unitdir}/o2cb.service
+
+        install -m 0644 ${WORKDIR}/ocfs2.service ${D}/${systemd_system_unitdir}
+        sed -i -e 's,@LIBDIR@,${libexecdir},' ${D}${systemd_system_unitdir}/ocfs2.service
+
         install -d ${D}/${libexecdir}
-        install -m 755 vendor/common/o2cb.init ${D}/${libexecdir}/o2cb-helper
+        install -m 0755 ${S}/vendor/common/o2cb.init ${D}/${libexecdir}/o2cb-helper
+        install -m 0755 ${S}/vendor/common/ocfs2.init ${D}${libexecdir}/ocfs2-helper
     fi
 }
 

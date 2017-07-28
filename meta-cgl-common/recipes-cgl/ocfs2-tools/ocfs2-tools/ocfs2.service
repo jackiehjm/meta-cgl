@@ -6,8 +6,8 @@ After=network.target o2cb.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/bin/mount -at ocfs2
-ExecStop=/bin/umount -a -t ocfs2
+ExecStart=@LIBDIR@/ocfs2-helper start
+ExecStop=@LIBDIR@/ocfs2-helper stop
 
 [Install]
 WantedBy=multi-user.target
