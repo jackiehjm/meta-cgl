@@ -23,8 +23,11 @@ S = "${WORKDIR}/git"
 
 inherit autotools-brokensep pkgconfig systemd
 
-DEPENDS = "corosync openais cluster-glue pacemaker libxml2 linux-libc-headers e2fsprogs libaio"
-RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
+DEPENDS = "corosync cluster-glue openais pacemaker \
+    libxml2 linux-libc-headers libaio \
+    e2fsprogs e2fsprogs-native \
+"
+
 ASNEEDED_pn-${PN} = ""
 PARALLEL_MAKE = ""
 INSANE_SKIP_${PN} = "unsafe-references-in-binaries"
@@ -88,4 +91,4 @@ do_install() {
     fi
 }
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
