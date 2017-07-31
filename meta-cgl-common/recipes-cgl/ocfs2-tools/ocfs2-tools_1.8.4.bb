@@ -27,6 +27,7 @@ DEPENDS = "corosync cluster-glue openais pacemaker \
     libxml2 linux-libc-headers libaio \
     e2fsprogs e2fsprogs-native \
 "
+RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
 
 ASNEEDED_pn-${PN} = ""
 PARALLEL_MAKE = ""
@@ -99,5 +100,3 @@ do_install_append() {
         install -m 0755 ${S}/vendor/common/ocfs2.init ${D}${libexecdir}/ocfs2-helper
     fi
 }
-
-RDEPENDS_${PN} = "bash coreutils net-tools module-init-tools e2fsprogs chkconfig glib-2.0"
