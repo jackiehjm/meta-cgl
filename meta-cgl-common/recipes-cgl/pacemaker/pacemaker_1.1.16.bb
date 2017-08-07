@@ -82,7 +82,7 @@ RDEPENDS_${PN}-remote += "libqb bash"
 FILES_${PN} += " ${datadir}/snmp                             \
                  ${libdir}/corosync/lcrso/pacemaker.lcrso    \
                  ${libdir}/${PYTHON_DIR}/dist-packages/cts/  \
-                 ${libdir}/ocf/resource.d/ \
+                 ${nonarch_libdir}/ocf/resource.d/ \
                  ${libdir}/${PYTHON_DIR}/site-packages \
                "
 FILES_${PN}-dbg += "${libdir}/corosync/lcrso/.debug"
