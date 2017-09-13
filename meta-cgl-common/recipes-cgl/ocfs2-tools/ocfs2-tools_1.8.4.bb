@@ -15,6 +15,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 SRC_URI = "git://oss.oracle.com/git/ocfs2-tools.git \
     file://0003-vendor-common-o2cb.ocf-add-new-conf-file.patch \
     file://disable-ocfs2-stack-user-support.patch \
+    file://ocfs2-fix-compile-error-when-glibc-upgrade.patch \
     file://o2cb.service \
     file://ocfs2.service \
 "
