@@ -1,4 +1,5 @@
 DESCRIPTION = "HTML Tagset bits."
+HOMEPAGE = "http://search.cpan.org/dist/HTML-Tagset/"
 SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
