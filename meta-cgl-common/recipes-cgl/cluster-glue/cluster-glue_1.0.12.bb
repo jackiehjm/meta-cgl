@@ -2,7 +2,7 @@ DESCRIPTION = "Cluster Glue is a set of libraries, tools and utilities suitable 
 the Heartbeat/Pacemaker cluster stack. In essence, Glue is everything that \
 is not the cluster messaging layer (Heartbeat), nor the cluster resource manager \
 (Pacemaker), nor a Resource Agent."
-
+HOMEPAGE = "http://clusterlabs.org/"
 LICENSE = "GPLv2 & LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe \
                     file://COPYING.LIB;md5=243b725d71bb5df4a1e5920b344b86ad \
