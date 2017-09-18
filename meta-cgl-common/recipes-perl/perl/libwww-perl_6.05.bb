@@ -1,4 +1,5 @@
 DESCRIPTION = "libwww-perl provides a simple and consistent API to the World Wide Web"
+HOMEPAGE = "http://search.cpan.org/dist/libwww-perl/"
 SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
