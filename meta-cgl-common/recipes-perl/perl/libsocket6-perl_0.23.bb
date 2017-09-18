@@ -1,4 +1,5 @@
 DESCRIPTION = "Perl extensions for IPv6"
+HOMEPAGE = "https://metacpan.org/release/Socket6"
 SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
