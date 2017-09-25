@@ -124,7 +124,7 @@ while getopts ":hb:c:d:f:g:j:k:l:m:ts:" OPTION; do
     esac
 done
 
-METALAYERS="$METALAYERS,meta-cloud-services,meta-cloud-services/meta-openstack,meta-openembedded/meta-filesystems,meta-openembedded/meta-networking,meta-openembedded/meta-oe,meta-openembedded/meta-perl,meta-openembedded/meta-python"
+METALAYERS="$METALAYERS,meta-cloud-services,meta-cloud-services/meta-openstack,meta-openembedded/meta-filesystems,meta-openembedded/meta-networking,meta-openembedded/meta-oe,meta-openembedded/meta-perl,meta-openembedded/meta-python,meta-openembedded/meta-multimedia,meta-openembedded/meta-gnome,meta-openembedded/meta-xfce"
 CGLROOT="$(pwd)"
 CGLROOT=$(readlink -f "$CGLROOT")
 DISTRO="poky-cgl"
