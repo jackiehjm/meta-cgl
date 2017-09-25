@@ -56,6 +56,4 @@ RDEPENDS_packagegroup-cgl-middleware = "\
     dmidecode \
     "
 
-DISTRO_FEATURES_append = " ptest argp ext2 xattr nfs pci ipv4 ipv6"
-
 RRECOMMENDS_packagegroup-cgl-middleware = ""
